@@ -22,9 +22,10 @@ type Social = {
 	party: Party;
 };
 
-type SocialPlayer = {
+export type SocialPlayer = {
 	uuid: string;
 	username: string;
+	ranks: RankName[];
 };
 
 type Party = {
