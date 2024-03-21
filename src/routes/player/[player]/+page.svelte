@@ -149,8 +149,7 @@
 	<meta
 		name="description"
 		content="
-		Island Stats is a website that allows you to view player stats, leaderboards, and more for the
-		MCC Island server."
+		Island Stats is a website that allows you to view player stats, leaderboards, and more for the MCC Island server."
 	/>
 	<link rel="icon" href={`https://mc-heads.net/avatar/${playerData.uuid}/128`} />
 </svelte:head>
@@ -197,14 +196,14 @@
 		<div class="w-full ml-0 sm:ml-4 my-auto space-y-2">
 			<div class="flex text-xl space-x-1">
 				{#if status.text === "Hidden"}
-				<span
-					class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
-				>
-					{status.text}
-				</span>
-				<Tooltip placement="top" arrow>Status API setting disabled</Tooltip>
+					<span
+						class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+					>
+						{status.text}
+					</span>
+					<Tooltip placement="top" arrow>Status API setting disabled</Tooltip>
 				{:else}
-				<span>{status.text}</span>
+					<span>{status.text}</span>
 				{/if}
 				{#if status.icon}
 					<img
