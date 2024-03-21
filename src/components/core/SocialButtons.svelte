@@ -27,7 +27,7 @@
 	};
 </script>
 
-<button class="bg-blue-400 mt-4 mr-2 p-1 rounded-full" on:click={onShare}>
+<button class="bg-sky-400 mt-4 mr-2 p-1 rounded-full" on:click={onShare}>
 	<img
 		src="/icons/share.png"
 		alt="Share"
@@ -41,7 +41,7 @@
 	role="checkbox"
 	aria-checked={!favoriteChecked}
 	on:click={clickFavorite}
-	class="group bg-blue-400 mt-4 mr-2 p-1 rounded-full"
+	class="group bg-sky-400 mt-4 mr-2 p-1 rounded-full"
 >
 	<img
 		src={"/icons/favorite.png"}
