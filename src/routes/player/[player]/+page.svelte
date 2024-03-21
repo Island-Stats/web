@@ -10,7 +10,7 @@
 	import SocialButtons from "../../../components/core/SocialButtons.svelte";
 	import Currency from "../../../components/player/Currency.svelte";
 	import NavSearch from "../../../components/core/NavSearch.svelte";
-	import { text } from "@sveltejs/kit";
+	import Friends from "../../../components/pages/Friends.svelte";
 
 	dayjs.extend(relativeTime);
 
@@ -18,12 +18,12 @@
 
 	let playerData: Player = data.player;
 
-	// Get the player's status
 	let status: { text: string; icon?: string } = {
 		text: "",
 		icon: ""
 	};
 
+	// Set the status text and icon
 	if (playerData.status?.online) {
 		switch (playerData.status.server.category) {
 			case "GAME": {
@@ -77,6 +77,8 @@
 			status.text = "Hidden";
 		}
 	}
+
+	let selectedPage: null | string = "friends";
 
 	// Placeholder faction data
 	const testData = {
@@ -224,7 +226,7 @@
 	>
 		<Currency currency={playerData.collections?.currency} />
 	</div>
-	<div id="additional-stats" class="flex space-x-4">
+	<div id="additional-stats" class="flex space-x-2">
 		<p>
 			Joined:{" "}
 			{#if playerData.status}
@@ -246,21 +248,6 @@
 			{/if}
 		</p>
 		<p>
-			Friends:
-			{#if playerData.social === undefined}
-				<span
-					class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
-				>
-					Hidden
-				</span>
-				<Tooltip placement="top" arrow>Social API setting disabled</Tooltip>
-			{:else}
-				<span>
-					{playerData.social.friends.length}
-				</span>
-			{/if}
-		</p>
-		<p>
 			Last Updated:{" "}
 			<span
 				class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
@@ -274,5 +261,44 @@
 	</div>
 	<div>
 		<b>Not seeing your stats?</b> Make sure to set your API preferences in your in-game settings!
+	</div>
+	<div class="flex flex-row justify-center space-x-5 mt-10">
+		<button
+			class={`rounded-lg p-2 font-semibold text-black transition-colors duration-500 ${selectedPage == "stats" ? "bg-teal-400" : "bg-neutral-200 hover:bg-teal-200"}`}
+			on:click={() => (selectedPage = "stats")}
+		>
+			Stats
+		</button>
+		<button
+			class={`rounded-lg p-2 font-semibold text-black transition-colors duration-500 ${selectedPage == "friends" ? "bg-teal-400" : "bg-neutral-200 hover:bg-teal-200"}`}
+			on:click={() => (selectedPage = "friends")}
+		>
+			Friends
+		</button>
+		<button
+			class={`rounded-lg p-2 font-semibold text-black transition-colors duration-500 ${selectedPage == "party" ? "bg-teal-400" : "bg-neutral-200 hover:bg-teal-200"}`}
+			on:click={() => (selectedPage = "party")}
+		>
+			Party
+		</button>
+	</div>
+	<div class="my-5 justify-center">
+		{#if selectedPage == "stats"}
+			<h3 class="text-2xl font-semibold text-center">Stats</h3>
+		{:else if selectedPage == "friends"}
+			<h3 class="text-2xl font-semibold text-center align-middle">
+				Friends
+				{#if playerData.social !== undefined}
+					<span class="text-sm text-neutral-400">({playerData.social.friends.length})</span>
+				{/if}
+			</h3>
+			{#if playerData.social === undefined}
+				<p class="text-center mt-1">Social API setting disabled</p>
+			{:else}
+				<Friends friends={playerData.social.friends} />
+			{/if}
+		{:else if selectedPage == "party"}
+			<h3 class="text-2xl font-semibold text-center">Party</h3>
+		{/if}
 	</div>
 </main>
