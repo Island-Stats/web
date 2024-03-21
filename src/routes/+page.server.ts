@@ -41,7 +41,6 @@ export const load = async ({ cookies }) => {
 		const data = await response.json();
 
 		if (!data.success) {
-			console.error(data.cause);
 			return {
 				profiles: []
 			};

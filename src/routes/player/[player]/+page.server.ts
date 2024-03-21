@@ -57,7 +57,6 @@ export const load = async ({ cookies, params }) => {
 			const bulkSearchData = await response.json();
 
 			if (!bulkSearchData.success) {
-				console.error(bulkSearchData.cause);
 				error(
 					404,
 					JSON.stringify({
@@ -125,6 +124,8 @@ export const actions = {
 					.join(","),
 				{ path: "/", encode: (string) => string }
 			);
+		} else if (favorites.length === 0) {
+			cookies.set("favorites", uuid, { path: "/", encode: (string) => string });
 		} else {
 			cookies.set("favorites", `${favorites},${uuid}`, { path: "/", encode: (string) => string });
 		}
