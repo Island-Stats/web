@@ -1,4 +1,4 @@
-import { API_KEY } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import { featuredProfiles } from "$lib/featuredProfiles";
 import { getHighestRank } from "$lib/ranks.js";
 import type { Player } from "$lib/schema.js";
@@ -12,7 +12,7 @@ export const load = async ({ cookies, params }) => {
 		headers: {
 			"Content-Type": "application/json",
 			"User-Agent": "IslandStats-Test",
-			"API-Key": process.env.API_KEY
+			"API-Key": env.API_KEY
 		}
 	});
 
@@ -47,7 +47,7 @@ export const load = async ({ cookies, params }) => {
 				headers: {
 					"Content-Type": "application/json",
 					"User-Agent": "IslandStats-Test",
-					"API-Key": API_KEY
+					"API-Key": env.API_KEY
 				},
 				body: JSON.stringify({
 					uuids
