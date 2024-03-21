@@ -1,0 +1,278 @@
+<script lang="ts">
+	import { Games, type Player } from "$lib/schema";
+	import { Tooltip } from "flowbite-svelte";
+	import About from "../../../components/core/About.svelte";
+	import Factions from "../../../components/player/Factions.svelte";
+	import PlayerModel from "../../../components/player/PlayerModel.svelte";
+	import dayjs from "dayjs";
+	import relativeTime from "dayjs/plugin/relativeTime";
+	import Nametag from "../../../components/player/Nametag.svelte";
+	import SocialButtons from "../../../components/core/SocialButtons.svelte";
+	import Currency from "../../../components/player/Currency.svelte";
+	import NavSearch from "../../../components/core/NavSearch.svelte";
+	import { text } from "@sveltejs/kit";
+
+	dayjs.extend(relativeTime);
+
+	export let data;
+
+	let playerData: Player = data.player;
+
+	// Get the player's status
+	let status: { text: string; icon?: string } = {
+		text: "",
+		icon: ""
+	};
+
+	if (playerData.status?.online) {
+		switch (playerData.status.server.category) {
+			case "GAME": {
+				const game = Games[playerData.status.server.associatedGame];
+				if (playerData.status.server.associatedGame === "PARKOUR_WARRIOR") {
+					switch (playerData.status.server.subType) {
+						case "survival": {
+							status.text = `Playing ${game.name} Survivor`;
+							status.icon = game.image;
+							break;
+						}
+						default: {
+							const subType: string = playerData.status.server.subType;
+							status.text = `Playing ${game.name} Dojo`;
+							status.icon = "pkw/solo/" + subType.replace("main-", "") + ".png";
+							break;
+						}
+					}
+				} else {
+					status.text = `Playing ${game.name}`;
+					status.icon = game.image;
+				}
+				break;
+			}
+
+			case "LOBBY": {
+				if (playerData.status.server.associatedGame) {
+					const gameName = Games[playerData.status.server.associatedGame];
+					status.icon = gameName.image;
+					status.text = `In the ${gameName.name} Lobby`;
+				} else {
+					status.text = "In the Main Lobby";
+					status.icon = "lobby/icon.png";
+				}
+				break;
+			}
+
+			case "LIMBO": {
+				status.text = "In Limbo";
+				break;
+			}
+			case "QUEUE": {
+				status.text = "In Queue";
+				break;
+			}
+		}
+	} else {
+		if (playerData.status !== undefined) {
+			status.text = "Offline";
+		} else {
+			status.text = "Hidden";
+		}
+	}
+
+	// Placeholder faction data
+	const testData = {
+		currentFaction: "aqua",
+		red: {
+			level: 0,
+			prestige: 0,
+			current: 0,
+			max: 1000
+		},
+		orange: {
+			level: 0,
+			prestige: 1,
+			current: 500,
+			max: 1000
+		},
+		yellow: {
+			level: 0,
+			prestige: 2,
+			current: 1000,
+			max: 1000
+		},
+		lime: {
+			level: 0,
+			prestige: 1,
+			current: 500,
+			max: 1000
+		},
+		green: {
+			level: 0,
+			prestige: 0,
+			current: 0,
+			max: 1000
+		},
+		cyan: {
+			level: 0,
+			prestige: 0,
+			current: 0,
+			max: 1000
+		},
+		aqua: {
+			level: 0,
+			prestige: 1,
+			current: 500,
+			max: 1000
+		},
+		blue: {
+			level: 0,
+			prestige: 2,
+			current: 1000,
+			max: 1000
+		},
+		purple: {
+			level: 0,
+			prestige: 1,
+			current: 500,
+			max: 1000
+		},
+		pink: {
+			level: 0,
+			prestige: 0,
+			current: 0,
+			max: 1000
+		}
+	};
+</script>
+
+<svelte:head>
+	<title>Island Stats</title>
+	<meta
+		name="description"
+		content="
+		Island Stats is a website that allows you to view player stats, leaderboards, and more for the
+		MCC Island server."
+	/>
+</svelte:head>
+
+<header
+	class="fixed top-0 left-0 right-0 h-12 bg-neutral-800 flex flex-row items-center z-50 text-lg justify-between"
+>
+	<a href="/" class="flex items-center ml-2 md:ml-4 font-semibold">
+		<img src="/icons/logo.png" alt="Island Stats Logo" class="mr-0.5 w-8 h-8 min-w-8" />
+		<p class="hidden sm:block">Island Stats</p>
+	</a>
+	<About />
+	<NavSearch />
+</header>
+<main class="backdrop-blur-lg backdrop-brightness-50 md:w-4/5 md:mx-auto min-h-full">
+	<div id="profile" class="flex flex-wrap justify-items-center gap-3 py-5 text-2xl md:text-4xl">
+		<div class="flex flex-col sm:flex-row sm:space-x-2">
+			<span>Stats for</span>
+			<div class="flex">
+				<Nametag
+					{...{
+						ranks: playerData.ranks,
+						playerName: playerData.username
+					}}
+				/>
+			</div>
+		</div>
+		<div class="w-full text-sm">
+			<SocialButtons
+				uuid={playerData.uuid}
+				username={playerData.username}
+				favorites={data.favorites?.split(",") ?? []}
+			/>
+		</div>
+	</div>
+
+	<div
+		id="levels"
+		class="flex flex-col sm:flex-row bg-black bg-opacity-30 p-5 ml-[calc(-1*20px)] mr-[calc(-1*20px)]"
+	>
+		<div class="mx-auto my-auto sm:mx-0">
+			<PlayerModel uuid={playerData.uuid} username={playerData.username} />
+		</div>
+		<div class="w-full ml-0 sm:ml-4 my-auto space-y-2">
+			<div class="flex text-xl space-x-1">
+				{#if status.text === "Hidden"}
+				<span
+					class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+				>
+					{status.text}
+				</span>
+				<Tooltip placement="top" arrow>Status API setting disabled</Tooltip>
+				{:else}
+				<span>{status.text}</span>
+				{/if}
+				{#if status.icon}
+					<img
+						src={`https://cdn.islandstats.xyz/games/${status.icon}`}
+						alt={status.text}
+						width={32}
+						height={32}
+						class="rounded-md"
+					/>
+				{/if}
+			</div>
+			<Factions factionData={testData} />
+		</div>
+	</div>
+	<div
+		id="stats"
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5 mt-4"
+	>
+		<Currency currency={playerData.collections?.currency} />
+	</div>
+	<div id="additional-stats" class="flex space-x-4">
+		<p>
+			Joined:{" "}
+			{#if playerData.status}
+				<span
+					class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+				>
+					{dayjs(playerData.status?.firstJoin).fromNow()}
+				</span>
+				<Tooltip placement="top" arrow>
+					{dayjs(playerData.status?.firstJoin).format("MMMM DD, YYYY [at] hh:mm:ss A")}
+				</Tooltip>
+			{:else}
+				<span
+					class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+				>
+					Hidden
+				</span>
+				<Tooltip placement="top" arrow>Status API setting disabled</Tooltip>
+			{/if}
+		</p>
+		<p>
+			Friends:
+			{#if playerData.social === undefined}
+				<span
+					class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+				>
+					Hidden
+				</span>
+				<Tooltip placement="top" arrow>Social API setting disabled</Tooltip>
+			{:else}
+				<span>
+					{playerData.social.friends.length}
+				</span>
+			{/if}
+		</p>
+		<p>
+			Last Updated:{" "}
+			<span
+				class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+			>
+				{dayjs(playerData.lastUpdated - 1000).fromNow()}
+			</span>
+			<Tooltip placement="top" arrow>
+				{dayjs(playerData.lastUpdated).format("MMMM DD, YYYY [at] hh:mm:ss A")}
+			</Tooltip>
+		</p>
+	</div>
+	<div>
+		<b>Not seeing your stats?</b> Make sure to set your API preferences in your in-game settings!
+	</div>
+</main>

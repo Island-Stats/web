@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bg: url("/background.jpg");
+	--text-hex: #ffffff;
+	--text-rgb: 255, 255, 255;
+	--icon-hex: #0ea5e9;
+	--icon-rgb: 96, 165, 250;
+	--grey_background-hex: #1e1e1e;
+	--grey_background-rgb: 30, 30, 30;
+}
+
+:root .true-colors {
+	--§0: #000000;
+	--§1: #0000aa;
+	--§2: #00aa00;
+	--§3: #00aaaa;
+	--§4: #aa0000;
+	--§5: #aa00aa;
+	--§6: #ffaa00;
+	--§7: #aaaaaa;
+	--§8: #555555;
+	--§9: #5555ff;
+	--§a: #55ff55;
+	--§b: #55ffff;
+	--§c: #ff5555;
+	--§d: #ff55ff;
+	--§e: #ffff55;
+	--§f: #ffffff;
+}
+
+:root .mcc-colors {
+	--noxcrew: #e63b3b;
+	--moderator: #b136fc;
+	--creator: #ec2791;
+	--contestant: #ec2791;
+	--grand_champ_royale: #fcc500;
+	--grand_champ: #00edfc;
+	--champ: #84eb34;
+	--default: #ffffff;
+	/* Rarity colors */
+	--common: #fcfcfc;
+	--common-dark: #979797;
+	--uncommon: #1efc00;
+	--uncommon-dark: #129700;
+	--rare: #006ffc;
+	--rare-dark: #004397;
+	--epic: #a134eb;
+	--epic-dark: #611f8d;
+	--legendary: #fc7e00;
+	--legendary-dark: #974c00;
+	--mythic: #f64141;
+	--mythic-dark: #942727;
+}
+
+:root .faction-colors {
+	--red: #fc5453;
+	--red-dark: #973232;
+	--orange: #fca800;
+	--orange-dark: #976500;
+	--yellow: #fcfc54;
+	--yellow-dark: #979732;
+	--lime: #54fc54;
+	--lime-dark: #329732;
+	--green: #00a800;
+	--green-dark: #006500;
+	--cyan: #00b997;
+	--cyan-dark: #006f5b;
+	--aqua: #54dafc;
+	--aqua-dark: #328397;
+	--blue: #5486fc;
+	--blue-dark: #325097;
+	--purple: #8632fc;
+	--purple-dark: #501e97;
+	--pink: #fc54fc;
+	--pink-dark: #973297;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+html {
+	background: var(--bg) no-repeat center center fixed;
+	background-size: cover;
+	overflow-x: hidden;
+	color: var(--text-hex);
+}
+
+main {
+	box-sizing: border-box;
+	min-height: calc(100vh - 48px);
+	grid-template-columns: 350px 350px 350px;
+	justify-items: stretch;
+	place-content: center;
+	gap: 20px;
+	margin-top: calc(48px + env(safe-area-inset-top));
+	padding-top: 20px;
+	padding-bottom: max(20px, env(safe-area-inset-bottom));
+	padding-left: max(20px, env(safe-area-inset-left));
+	padding-right: max(20px, env(safe-area-inset-right));
+
+	@media (max-width: 1200px) {
+		grid-template-columns: 350px 350px;
+	}
+	@media (max-width: 772px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+main.grid > * {
+	border-radius: 10px;
+	-webkit-backdrop-filter: blur(16px) brightness(0.5);
+	backdrop-filter: blur(16px) brightness(0.5);
+}
+
+.expander {
+	cursor: pointer;
+}
+
+.expander::before {
+	content: " ";
+	position: fixed;
+	top: calc(48px + env(safe-area-inset-top, 0));
+	bottom: 0;
+	left: 0;
+	right: 0;
+	visibility: hidden;
+	background-color: rgba(0, 0, 0, 0);
+	transition: background-color 0.3s ease-in-out, visibility 0.3s linear;
+}
+
+.expander[aria-expanded="true"]::before {
+	visibility: visible;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#info-box {
+	left: calc(50% - 256px);
+	top: 20%;
+	width: 512px;
+	padding: 14px 30px;
+	line-height: initial;
+	--clip-center: 256px 0;
+	@media (max-width: 725px) {
+		left: 20px;
+		right: 20px;
+		width: unset;
+		--clip-center: 50% 0;
+	}
+}
+
+.expander[aria-expanded="true"] + .expandable {
+	visibility: visible;
+	clip-path: circle(150% at var(--clip-center));
+}
+
+.expander + .expandable {
+	position: fixed;
+	top: calc(48px + env(safe-area-inset-top, 0));
+	max-height: calc(
+		100vh - 48px - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0)
+	);
+	box-sizing: border-box;
+	margin: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	z-index: 100;
+	border-radius: 10px;
+	background-color: rgba(var(--grey_background-rgb), 0.95);
+	visibility: hidden;
+	clip-path: circle(0% at var(--clip-center));
+	transition: clip-path 0.3s ease-in-out, visibility 0.3s linear;
+}
+
+.expandable a {
+	color: var(--icon-hex);
+}
+
+.expandable a:hover {
+	text-decoration: underline;
+}
+
+.pixelated {
+	image-rendering: pixelated;
+}
+
+.icon-shadow {
+	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+@media screen and (max-width: 640px) {
+	.expander {
+		mask-repeat: no-repeat;
+		mask-image: url("/icons/about.svg");
+		background: #ffffff;
+		width: 1rem;
+		height: 1rem;
+		margin: 1rem 0.5rem;
+		
+	}
+	
+}
