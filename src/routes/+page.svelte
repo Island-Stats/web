@@ -17,6 +17,7 @@
 		Island Stats is a website that allows you to view player stats, leaderboards, and more for the
 		MCC Island server."
 	/>
+	<link rel="icon" href="./favicon.ico" />
 </svelte:head>
 
 <header

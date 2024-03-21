@@ -145,13 +145,14 @@
 </script>
 
 <svelte:head>
-	<title>Island Stats</title>
+	<title>{playerData.username} | Island Stats</title>
 	<meta
 		name="description"
 		content="
 		Island Stats is a website that allows you to view player stats, leaderboards, and more for the
 		MCC Island server."
 	/>
+	<link rel="icon" href={`https://mc-heads.net/avatar/${playerData.uuid}/128`} />
 </svelte:head>
 
 <header
