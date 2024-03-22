@@ -19,7 +19,7 @@
 		</p>
 		<p>
 			Want to help contribute? Check out the
-			<a href={"https://github.com/Island-Stats/site"}>GitHub</a>
+			<a href={"https://github.com/Island-Stats/web"}>GitHub</a>
 			repo or join our <a href={"https://discord.islandstats.xyz"}>Discord</a>.
 		</p>
 		<p>
