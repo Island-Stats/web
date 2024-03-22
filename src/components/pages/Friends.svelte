@@ -4,6 +4,9 @@
 
 	export let friends: SocialPlayer[] = [];
 
+	// Sort friends by alphabetical order
+	friends.sort((a, b) => a.username.localeCompare(b.username));
+
 	// Pagination
 	const itemsPerPage = 12;
 
@@ -45,7 +48,7 @@
 					<img
 						src={`https://cdn.islandstats.xyz/ranks/${getHighestRank(friend.ranks).toLowerCase()}.png`}
 						alt={`Rank: ${getHighestRank(friend.ranks).toLowerCase()}`}
-						class="ml-1 h-8 w-8 rounded-md"
+						class="ml-1 h-6 w-6 rounded-md self-center"
 					/>
 				</p>
 			</a>
