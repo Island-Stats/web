@@ -11,6 +11,7 @@
 	import Currency from "../../../components/player/Currency.svelte";
 	import NavSearch from "../../../components/core/NavSearch.svelte";
 	import Friends from "../../../components/pages/Friends.svelte";
+	import Party from "../../../components/pages/Party.svelte";
 
 	dayjs.extend(relativeTime);
 
@@ -285,6 +286,11 @@
 	<div class="my-5 justify-center">
 		{#if selectedPage == "stats"}
 			<h3 class="text-2xl font-semibold text-center">Stats</h3>
+			{#if playerData.statistics === undefined}
+				<p class="text-center mt-1">Statistics API setting disabled</p>
+			{:else}
+				<!-- Stats will be here -->
+			{/if}
 		{:else if selectedPage == "friends"}
 			<h3 class="text-2xl font-semibold text-center align-middle">
 				Friends
@@ -299,6 +305,11 @@
 			{/if}
 		{:else if selectedPage == "party"}
 			<h3 class="text-2xl font-semibold text-center">Party</h3>
+			{#if playerData.social === undefined}
+				<p class="text-center mt-1">Social API setting disabled</p>
+			{:else}
+				<Party party={playerData.social.party} />
+			{/if}
 		{/if}
 	</div>
 </main>

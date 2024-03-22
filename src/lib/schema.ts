@@ -28,7 +28,7 @@ export type SocialPlayer = {
 	ranks: RankName[];
 };
 
-type Party = {
+export type Party = {
 	active: boolean;
 	leader: SocialPlayer;
 	members: SocialPlayer[];
