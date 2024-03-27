@@ -26,7 +26,10 @@ export const load = async ({ cookies }) => {
 	uuids.push(...featuredProfiles.map((profile) => profile.uuid));
 
 	try {
-		const response = await fetch(`https://api.islandstats.xyz/bulk/`, {
+		const url = env.PRODUCTION
+			? "https://api.islandstats.xyz/bulk/"
+			: "http://localhost:3001/bulk/";
+		const response = await fetch(url, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -7,7 +7,10 @@ import { error } from "@sveltejs/kit";
 export const load = async ({ cookies, params }) => {
 	const searchedPlayer = params.player;
 
-	const response = await fetch(`https://api.islandstats.xyz/player/${searchedPlayer}`, {
+	const url = env.PRODUCTION
+		? "https://api.islandstats.xyz/player/"
+		: "http://localhost:3001/player/";
+	const response = await fetch(`${url}/${searchedPlayer}`, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
@@ -42,7 +45,10 @@ export const load = async ({ cookies, params }) => {
 		uuids.push(...featuredProfiles.map((profile) => profile.uuid));
 
 		try {
-			const response = await fetch(`https://api.islandstats.xyz/bulk/`, {
+			const url = env.PRODUCTION
+				? "https://api.islandstats.xyz/bulk/"
+				: "http://localhost:3001/bulk/";
+			const response = await fetch(url, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
