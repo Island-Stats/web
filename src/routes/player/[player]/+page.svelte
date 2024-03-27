@@ -79,7 +79,7 @@
 		}
 	}
 
-	let selectedPage: null | string = "friends";
+	let selectedPage: string = "friends";
 
 	// Placeholder faction data
 	const testData = {
@@ -289,7 +289,7 @@
 			{#if playerData.statistics === undefined}
 				<p class="text-center mt-1">Statistics API setting disabled</p>
 			{:else}
-				<!-- Stats will be here -->
+				<p class="text-center mt-1">Coming Soon</p>
 			{/if}
 		{:else if selectedPage == "friends"}
 			<h3 class="text-2xl font-semibold text-center align-middle">
