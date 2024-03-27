@@ -34,7 +34,7 @@
 		enterKeyHint="go"
 		placeholder="Enter Username"
 		aria-label="username"
-		class="h-9 w-full bg-white bg-opacity-10 text-center text-white text-xl"
+		class="h-9 w-full bg-white bg-opacity-10 text-center text-xl text-white placeholder:text-neutral-400"
 		required
 		bind:value={ign}
 	/>

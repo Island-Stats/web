@@ -29,7 +29,7 @@
 		enterKeyHint="go"
 		placeholder="Enter Username"
 		aria-label="username"
-		class="bg-inherit align-middle left-1 placeholder-neutral-800"
+		class="left-1 w-[90%] bg-inherit align-middle text-black placeholder-neutral-800"
 		required
 		bind:value={ign}
 	/>
