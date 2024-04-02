@@ -26,6 +26,9 @@ export type SocialPlayer = {
 	uuid: string;
 	username: string;
 	ranks: RankName[];
+	status?: {
+		online: boolean;
+	};
 };
 
 export type Party = {
@@ -45,7 +48,7 @@ type Status = {
 
 // Statistics Types
 
-type Statistics = {
+export type Statistics = {
 	value: {
 		statistic: {
 			key: string
