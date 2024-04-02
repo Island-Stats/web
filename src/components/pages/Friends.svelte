@@ -4,8 +4,12 @@
 
 	export let friends: SocialPlayer[] = [];
 
-	// Sort friends by alphabetical order
-	friends.sort((a, b) => a.username.localeCompare(b.username));
+	// Sort friends by online status (if there) and then alphabetical order
+	friends.sort((a, b) => {
+		if (a.status?.online && !b.status?.online) return -1;
+		if (!a.status?.online && b.status?.online) return 1;
+		return a.username.localeCompare(b.username);
+	});
 
 	// Pagination
 	const itemsPerPage = 12;
@@ -31,26 +35,33 @@
 			</button>
 		{/each}
 	</div>
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-between gap-5">
+	<div
+		class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-between gap-5"
+	>
 		{#each pages[currentPage - 1] as friend}
 			<a
 				href={`/player/${friend.username}`}
 				target="_blank"
-				class="flex items-center space-x-2 transition-colors duration-200 hover:text-sky-500"
+				class="group flex items-center space-x-2 transition-colors duration-200"
 			>
 				<img
 					src={`https://mc-heads.net/avatar/${friend.uuid}/64`}
 					alt={`Avatar of ${friend.username}`}
 					class="rounded-lg w-8 sm:w-16"
 				/>
-				<p class="text-lg font-semibold flex">
-					{friend.username}
-					<img
-						src={`https://cdn.islandstats.xyz/ranks/${getHighestRank(friend.ranks).toLowerCase()}.png`}
-						alt={`Rank: ${getHighestRank(friend.ranks).toLowerCase()}`}
-						class="ml-1 h-6 w-6 rounded-md self-center"
-					/>
-				</p>
+				<div class="flex flex-col">
+					<p class="flex text-lg font-semibold group-hover:text-sky-500">
+						{friend.username}
+						<img
+							src={`https://cdn.islandstats.xyz/ranks/${getHighestRank(friend.ranks).toLowerCase()}.png`}
+							alt={`Rank: ${getHighestRank(friend.ranks).toLowerCase()}`}
+							class="ml-1 h-6 w-6 rounded-md self-center"
+						/>
+					</p>
+					{#if friend.status?.online}
+						<p class="">Online</p>
+					{/if}
+				</div>
 			</a>
 		{/each}
 	</div>
