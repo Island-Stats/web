@@ -40,7 +40,7 @@
 	>
 		{#each pages[currentPage - 1] as friend}
 			<a
-				href={`/player/${friend.username}`}
+				href={`/player/${friend.uuid}`}
 				target="_blank"
 				class="group flex items-center space-x-2 transition-colors duration-200"
 			>
