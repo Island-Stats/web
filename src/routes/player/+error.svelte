@@ -60,13 +60,9 @@
 				Discord
 			</a>{" "}
 			or{" "}
-			<a
-				href="https://github.com/Island-Stats/web/issues"
-				class="text-sky-200 hover:text-sky-400"
-			>
+			<a href="https://github.com/Island-Stats/web/issues" class="text-sky-200 hover:text-sky-400">
 				GitHub
-			</a>
-			.
+			</a>.
 		</p>
 	</div>
 	{#if profiles.length === 0}

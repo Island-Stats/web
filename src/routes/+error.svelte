@@ -27,9 +27,7 @@
 </header>
 <main class="grid">
 	<div class="group col-span-full py-5 px-2 text-center">
-		<p class="text-neutral-200 text-xl font-bold transition-colors">
-			Error
-		</p>
+		<p class="text-neutral-200 text-xl font-bold transition-colors">Error</p>
 		<p class="text-neutral-200">
 			{error}
 		</p>
@@ -42,13 +40,9 @@
 				Discord
 			</a>{" "}
 			or{" "}
-			<a
-				href="https://github.com/Island-Stats/web/issues"
-				class="text-sky-200 hover:text-sky-400"
-			>
+			<a href="https://github.com/Island-Stats/web/issues" class="text-sky-200 hover:text-sky-400">
 				GitHub
-			</a>
-			.
+			</a>.
 		</p>
 	</div>
 </main>
