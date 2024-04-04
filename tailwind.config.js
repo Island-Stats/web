@@ -5,7 +5,11 @@ export default {
 		"./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}"
 	],
 	theme: {
-		extend: {}
+		extend: {
+			transitionProperty: {
+				filter: "filter"
+			}
+		}
 	},
 	plugins: [require("flowbite/plugin")]
 };
