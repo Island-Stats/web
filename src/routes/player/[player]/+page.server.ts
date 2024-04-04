@@ -7,7 +7,7 @@ import { error } from "@sveltejs/kit";
 export const load = async ({ cookies, params }) => {
 	const searchedPlayer = params.player;
 	const url =
-		env.ENV === "production"
+		env.ENV == "production"
 			? "https://api.islandstats.xyz/player/"
 			: "http://localhost:3001/player/";
 	const response = await fetch(`${url}/${searchedPlayer}`, {
