@@ -95,7 +95,8 @@
 			WLR:
 			<span class="font-bold">
 				{(
-					parkourWarriorStats.survivor.final_duel_wins / parkourWarriorStats.survivor.games_played
+					parkourWarriorStats.survivor.final_duel_wins /
+						parkourWarriorStats.survivor.games_played || 0
 				).toFixed(2)}
 			</span>
 		</p>

@@ -37,7 +37,7 @@
 			<span class="font-bold">
 				{(
 					skyBattleStats.quads.survival_first_place /
-					(skyBattleStats.quads.games_played - skyBattleStats.quads.survival_first_place)
+						(skyBattleStats.quads.games_played - skyBattleStats.quads.survival_first_place) || 0
 				).toFixed(2)}
 			</span>
 		</p>
@@ -55,7 +55,7 @@
 			KDR: <span class="font-bold"
 				>{(
 					skyBattleStats.quads.kills /
-					(skyBattleStats.quads.games_played - skyBattleStats.quads.survival_first_place)
+						(skyBattleStats.quads.games_played - skyBattleStats.quads.survival_first_place) || 0
 				).toFixed(2)}</span
 			>
 		</p>
@@ -89,8 +89,7 @@
 			</span>
 			<span class="text-neutral-400">
 				({(
-					(skyBattleStats.quads.survival_first_place / skyBattleStats.quads.games_played) *
-					100
+					(skyBattleStats.quads.survival_first_place / skyBattleStats.quads.games_played) * 100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -105,7 +104,7 @@
 				({(
 					((skyBattleStats.quads.survival_top_three - skyBattleStats.quads.survival_first_place) /
 						skyBattleStats.quads.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -120,7 +119,7 @@
 				({(
 					((skyBattleStats.quads.survival_top_five - skyBattleStats.quads.survival_top_three) /
 						skyBattleStats.quads.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -133,8 +132,7 @@
 			</span>
 			<span class="text-neutral-400">
 				({(
-					(skyBattleStats.quads.team_first_place / skyBattleStats.quads.games_played) *
-					100
+					(skyBattleStats.quads.team_first_place / skyBattleStats.quads.games_played) * 100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -149,7 +147,7 @@
 				({(
 					((skyBattleStats.quads.team_second_place - skyBattleStats.quads.team_first_place) /
 						skyBattleStats.quads.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -164,7 +162,7 @@
 				({(
 					((skyBattleStats.quads.team_third_place - skyBattleStats.quads.team_second_place) /
 						skyBattleStats.quads.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -179,7 +177,7 @@
 				({(
 					((skyBattleStats.quads.team_fourth_place - skyBattleStats.quads.team_third_place) /
 						skyBattleStats.quads.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>

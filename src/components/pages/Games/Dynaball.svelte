@@ -29,7 +29,7 @@
 		<p>
 			WLR:
 			<span class="font-bold">
-				{(dynaballStats.wins / (dynaballStats.games_played - dynaballStats.wins)).toFixed(2)}
+				{(dynaballStats.wins / (dynaballStats.games_played - dynaballStats.wins) || 0).toFixed(2)}
 			</span>
 		</p>
 	</div>
@@ -71,7 +71,7 @@
 				({(
 					((dynaballStats.survived_minute - dynaballStats.survived_two_minute) /
 						dynaballStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -84,7 +84,7 @@
 				({(
 					((dynaballStats.survived_two_minute - dynaballStats.survived_three_minute) /
 						dynaballStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -99,7 +99,7 @@
 				({(
 					((dynaballStats.survived_three_minute - dynaballStats.survived_four_minute) /
 						dynaballStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -109,7 +109,9 @@
 				{dynaballStats.survived_four_minute.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((dynaballStats.survived_four_minute / dynaballStats.games_played) * 100).toFixed(0)}%)
+				({((dynaballStats.survived_four_minute / dynaballStats.games_played) * 100 || 0).toFixed(
+					0
+				)}%)
 			</span>
 		</p>
 	</div>

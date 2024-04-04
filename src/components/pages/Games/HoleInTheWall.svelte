@@ -15,7 +15,7 @@
 			{(
 				calculateTrophies(holeInTheWallStats, badges.hitw) +
 				calculateTrophies(holeInTheWallStats, badges.hitw_tiered)
-				).toLocaleString()}
+			).toLocaleString()}
 		</span>
 		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
@@ -31,7 +31,7 @@
 		<p>
 			WLR:
 			<span class="font-bold">
-				{(holeInTheWallStats.first_place / holeInTheWallStats.games_played).toFixed(2)}
+				{(holeInTheWallStats.first_place / holeInTheWallStats.games_played || 0).toFixed(2)}
 			</span>
 		</p>
 	</div>
@@ -46,7 +46,9 @@
 				{holeInTheWallStats.first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((holeInTheWallStats.first_place / holeInTheWallStats.games_played) * 100).toFixed(0)}%)
+				({((holeInTheWallStats.first_place / holeInTheWallStats.games_played) * 100 || 0).toFixed(
+					0
+				)}%)
 			</span>
 		</p>
 		<p>
@@ -58,7 +60,7 @@
 				({(
 					((holeInTheWallStats.top_three - holeInTheWallStats.first_place) /
 						holeInTheWallStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -71,7 +73,7 @@
 				({(
 					((holeInTheWallStats.top_five - holeInTheWallStats.top_three) /
 						holeInTheWallStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>

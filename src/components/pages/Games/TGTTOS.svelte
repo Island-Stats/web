@@ -31,7 +31,7 @@
 		<p>
 			WLR:
 			<span class="font-bold">
-				{(tgttosStats.first_place / tgttosStats.games_played).toFixed(2)}
+				{(tgttosStats.first_place / tgttosStats.games_played || 0).toFixed(2)}
 			</span>
 		</p>
 	</div>
@@ -44,7 +44,7 @@
 			Deaths: <span class="font-bold">{tgttosStats.deaths.toLocaleString()}</span>
 		</p>
 		<p>
-			KDR: <span class="font-bold">{(tgttosStats.kills / tgttosStats.deaths).toFixed(2)}</span>
+			KDR: <span class="font-bold">{(tgttosStats.kills / tgttosStats.deaths || 0).toFixed(2)}</span>
 		</p>
 	</div>
 	<div>
@@ -71,7 +71,7 @@
 				{tgttosStats.first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((tgttosStats.first_place / tgttosStats.games_played) * 100).toFixed(0)}%)
+				({((tgttosStats.first_place / tgttosStats.games_played) * 100 || 0).toFixed(0)}%)
 			</span>
 		</p>
 		<p>
@@ -81,8 +81,7 @@
 			</span>
 			<span class="text-neutral-400">
 				({(
-					((tgttosStats.top_three - tgttosStats.first_place) / tgttosStats.games_played) *
-					100
+					((tgttosStats.top_three - tgttosStats.first_place) / tgttosStats.games_played) * 100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -93,8 +92,7 @@
 			</span>
 			<span class="text-neutral-400">
 				({(
-					((tgttosStats.top_five - tgttosStats.top_three) / tgttosStats.games_played) *
-					100
+					((tgttosStats.top_five - tgttosStats.top_three) / tgttosStats.games_played) * 100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -106,7 +104,9 @@
 				{tgttosStats.round_first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((tgttosStats.round_first_place / (tgttosStats.games_played * 3)) * 100).toFixed(0)}%)
+				({((tgttosStats.round_first_place / (tgttosStats.games_played * 3)) * 100 || 0).toFixed(
+					0
+				)}%)
 			</span>
 		</p>
 		<p>
@@ -118,7 +118,7 @@
 				({(
 					((tgttosStats.round_top_three - tgttosStats.round_first_place) /
 						(tgttosStats.games_played * 3)) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -131,7 +131,7 @@
 				({(
 					((tgttosStats.round_top_five - tgttosStats.round_top_three) /
 						(tgttosStats.games_played * 3)) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -144,7 +144,7 @@
 				({(
 					((tgttosStats.round_top_eight - tgttosStats.round_top_five) /
 						(tgttosStats.games_played * 3)) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
