@@ -253,11 +253,12 @@
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
 		{#each badges.sky_battle_tiered as badge}
-			<div class="flex flex-col sm:flex-row gap-2">
+			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
 					src={`https://cdn.islandstats.xyz/badges/sky_battle/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
-					class="h-12 w-12 rounded-lg sm:h-16 sm:w-16"
+					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
+					class:grayscale={skyBattleStats.quads[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
 					<p class="flex text-lg font-semibold">
