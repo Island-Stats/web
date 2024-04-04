@@ -30,8 +30,8 @@
 			WLR:
 			<span class="font-bold">
 				{(
-					battleBoxStats.rounds_won /
-					(battleBoxStats.games_played * 3 - battleBoxStats.rounds_won)
+					(battleBoxStats.rounds_won / battleBoxStats.games_played) * 3 -
+						battleBoxStats.rounds_won || 0
 				).toFixed(2)}
 			</span>
 		</p>
@@ -40,7 +40,8 @@
 		<p>Kills: <span class="font-bold">{battleBoxStats.kills.toLocaleString()}</span></p>
 		<p>Deaths: <span class="font-bold">{battleBoxStats.deaths.toLocaleString()}</span></p>
 		<p>
-			KDR: <span class="font-bold">{(battleBoxStats.kills / battleBoxStats.deaths).toFixed(2)}</span
+			KDR: <span class="font-bold"
+				>{(battleBoxStats.kills / battleBoxStats.deaths || 0).toFixed(2)}</span
 			>
 		</p>
 	</div>
@@ -65,7 +66,7 @@
 				{battleBoxStats.team_first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((battleBoxStats.team_first_place / battleBoxStats.games_played) * 100).toFixed(0)}%)
+				({((battleBoxStats.team_first_place / battleBoxStats.games_played) * 100 || 0).toFixed(0)}%)
 			</span>
 		</p>
 		<p>
@@ -77,7 +78,7 @@
 				({(
 					((battleBoxStats.team_second_place - battleBoxStats.team_first_place) /
 						battleBoxStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -90,7 +91,7 @@
 				({(
 					((battleBoxStats.team_third_place - battleBoxStats.team_second_place) /
 						battleBoxStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -103,7 +104,7 @@
 				({(
 					((battleBoxStats.team_fourth_place - battleBoxStats.team_third_place) /
 						battleBoxStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -115,7 +116,7 @@
 				{battleBoxStats.solo_first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((battleBoxStats.solo_first_place / battleBoxStats.games_played) * 100).toFixed(0)}%)
+				({((battleBoxStats.solo_first_place / battleBoxStats.games_played) * 100 || 0).toFixed(0)}%)
 			</span>
 		</p>
 		<p>
@@ -127,7 +128,7 @@
 				({(
 					((battleBoxStats.solo_top_three - battleBoxStats.solo_first_place) /
 						battleBoxStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -140,7 +141,7 @@
 				({(
 					((battleBoxStats.solo_top_five - battleBoxStats.solo_top_three) /
 						battleBoxStats.games_played) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -195,11 +196,12 @@
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
 		{#each badges.battle_box_tiered as badge}
-			<div class="flex flex-col sm:flex-row gap-2">
+			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
 					src={`https://cdn.islandstats.xyz/badges/battle_box/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
-					class="h-12 w-12 rounded-lg sm:h-16 sm:w-16"
+					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
+					class:grayscale={battleBoxStats[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
 					<p class="flex text-lg font-semibold">

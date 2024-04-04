@@ -31,7 +31,7 @@
 		<p>
 			WLR:
 			<span class="font-bold">
-				{(tgttosStats.first_place / tgttosStats.games_played).toFixed(2)}
+				{(tgttosStats.first_place / tgttosStats.games_played || 0).toFixed(2)}
 			</span>
 		</p>
 	</div>
@@ -44,7 +44,7 @@
 			Deaths: <span class="font-bold">{tgttosStats.deaths.toLocaleString()}</span>
 		</p>
 		<p>
-			KDR: <span class="font-bold">{(tgttosStats.kills / tgttosStats.deaths).toFixed(2)}</span>
+			KDR: <span class="font-bold">{(tgttosStats.kills / tgttosStats.deaths || 0).toFixed(2)}</span>
 		</p>
 	</div>
 	<div>
@@ -71,7 +71,7 @@
 				{tgttosStats.first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((tgttosStats.first_place / tgttosStats.games_played) * 100).toFixed(0)}%)
+				({((tgttosStats.first_place / tgttosStats.games_played) * 100 || 0).toFixed(0)}%)
 			</span>
 		</p>
 		<p>
@@ -81,8 +81,7 @@
 			</span>
 			<span class="text-neutral-400">
 				({(
-					((tgttosStats.top_three - tgttosStats.first_place) / tgttosStats.games_played) *
-					100
+					((tgttosStats.top_three - tgttosStats.first_place) / tgttosStats.games_played) * 100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -93,8 +92,7 @@
 			</span>
 			<span class="text-neutral-400">
 				({(
-					((tgttosStats.top_five - tgttosStats.top_three) / tgttosStats.games_played) *
-					100
+					((tgttosStats.top_five - tgttosStats.top_three) / tgttosStats.games_played) * 100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -106,7 +104,9 @@
 				{tgttosStats.round_first_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({((tgttosStats.round_first_place / (tgttosStats.games_played * 3)) * 100).toFixed(0)}%)
+				({((tgttosStats.round_first_place / (tgttosStats.games_played * 3)) * 100 || 0).toFixed(
+					0
+				)}%)
 			</span>
 		</p>
 		<p>
@@ -118,7 +118,7 @@
 				({(
 					((tgttosStats.round_top_three - tgttosStats.round_first_place) /
 						(tgttosStats.games_played * 3)) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -131,7 +131,7 @@
 				({(
 					((tgttosStats.round_top_five - tgttosStats.round_top_three) /
 						(tgttosStats.games_played * 3)) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -144,7 +144,7 @@
 				({(
 					((tgttosStats.round_top_eight - tgttosStats.round_top_five) /
 						(tgttosStats.games_played * 3)) *
-					100
+						100 || 0
 				).toFixed(0)}%)
 			</span>
 		</p>
@@ -156,7 +156,7 @@
 		<span class="ml-1">{calculateTrophies(tgttosStats, badges.tgttos)}</span>
 		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
-	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
+	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
 		{#each badges.tgttos as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
@@ -184,11 +184,12 @@
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.tgttos_tiered as badge}
-			<div class="flex flex-col sm:flex-row gap-2">
+			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
 					src={`https://cdn.islandstats.xyz/badges/tgttos/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
-					class="h-12 w-12 rounded-lg sm:h-16 sm:w-16"
+					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
+					class:grayscale={tgttosStats[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
 					<p class="flex text-lg font-semibold">
