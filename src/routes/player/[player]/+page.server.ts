@@ -6,121 +6,111 @@ import { error } from "@sveltejs/kit";
 
 export const load = async ({ cookies, params }) => {
 	const searchedPlayer = params.player;
+	const url =
+		env.NODE_ENV == "production"
+			? "https://api.islandstats.xyz/player/"
+			: "http://localhost:3001/player/";
+	const response = await fetch(`${url}/${searchedPlayer}`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"User-Agent": "IslandStats-Test",
+			"API-Key": env.API_KEY
+		}
+	});
 
-	try {
-		const url =
-			env.NODE_ENV == "production"
-				? "https://api.islandstats.xyz/player/"
-				: "http://localhost:3001/player/";
-		const response = await fetch(`${url}/${searchedPlayer}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"User-Agent": "IslandStats-Test",
-				"API-Key": env.API_KEY
-			}
-		});
+	const playerSearchData = await response.json();
 
-		const playerSearchData = await response.json();
+	// If search is not successful, return 404 and fetch favorite and featured profiles
+	if (!playerSearchData.success) {
+		let profiles: {
+			uuid: string;
+			username: string;
+			message: string;
+			rank: string;
+		}[] = [];
+		const uuids: string[] = [];
 
-		// If search is not successful, return 404 and fetch favorite and featured profiles
-		if (!playerSearchData.success) {
-			let profiles: {
-				uuid: string;
-				username: string;
-				message: string;
-				rank: string;
-			}[] = [];
-			const uuids: string[] = [];
+		const favorites = cookies.get("favorites");
 
-			const favorites = cookies.get("favorites");
-
-			if (favorites) {
-				uuids.push(
-					...favorites
-						.split(",")
-						.filter((uuid, index, array) => array.indexOf(uuid) === index)
-						.filter((uuid) => !featuredProfiles.some((profile) => profile.uuid === uuid))
-				);
-			}
-
-			uuids.push(...featuredProfiles.map((profile) => profile.uuid));
-
-			try {
-				const url =
-					env.NODE_ENV == "production"
-						? "https://api.islandstats.xyz/bulk/"
-						: "http://localhost:3001/bulk/";
-				const response = await fetch(url, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						"User-Agent": "IslandStats-Test",
-						"API-Key": env.API_KEY
-					},
-					body: JSON.stringify({
-						uuids
-					})
-				});
-
-				const bulkSearchData = await response.json();
-
-				if (!bulkSearchData.success) {
-					error(
-						404,
-						JSON.stringify({
-							error: bulkSearchData.cause,
-							profiles: []
-						})
-					);
-				}
-
-				const players: Player[] = bulkSearchData.data;
-
-				// sort the players by the order of the uuids with favorites first and featured profiles second
-				players.sort((a: Player, b: Player) => {
-					const aIndex = uuids.indexOf(a.uuid);
-					const bIndex = uuids.indexOf(b.uuid);
-
-					return aIndex - bIndex;
-				});
-
-				players.forEach((player: Player) => {
-					const profile = featuredProfiles.find((profile) => profile.uuid === player.uuid);
-
-					profiles.push({
-						uuid: player.uuid,
-						username: player.username,
-						message: profile?.message || "",
-						rank: getHighestRank(player.ranks)
-					});
-				});
-			} catch (error) {
-				console.error(error);
-				profiles = [];
-			}
-
-			error(
-				404,
-				JSON.stringify({
-					error: playerSearchData.cause,
-					profiles
-				})
+		if (favorites) {
+			uuids.push(
+				...favorites
+					.split(",")
+					.filter((uuid, index, array) => array.indexOf(uuid) === index)
+					.filter((uuid) => !featuredProfiles.some((profile) => profile.uuid === uuid))
 			);
 		}
 
-		return {
-			player: playerSearchData.player,
-			favorites: cookies.get("favorites")
-		};
-	} catch (err) {
-		console.error(err);
-		if (err instanceof TypeError) {
-			error(500, JSON.stringify({ error: "It looks like our API is having issues. Please try again later.", profiles: [] }));
-		} else {
-			error(500, JSON.stringify({ error: "An unknown error occurred.", profiles: [] }));
+		uuids.push(...featuredProfiles.map((profile) => profile.uuid));
+
+		try {
+			const url =
+				env.NODE_ENV == "production"
+					? "https://api.islandstats.xyz/bulk/"
+					: "http://localhost:3001/bulk/";
+			const response = await fetch(url, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"User-Agent": "IslandStats-Test",
+					"API-Key": env.API_KEY
+				},
+				body: JSON.stringify({
+					uuids
+				})
+			});
+
+			const bulkSearchData = await response.json();
+
+			if (!bulkSearchData.success) {
+				error(
+					404,
+					JSON.stringify({
+						error: bulkSearchData.cause,
+						profiles: []
+					})
+				);
+			}
+
+			const players: Player[] = bulkSearchData.data;
+
+			// sort the players by the order of the uuids with favorites first and featured profiles second
+			players.sort((a: Player, b: Player) => {
+				const aIndex = uuids.indexOf(a.uuid);
+				const bIndex = uuids.indexOf(b.uuid);
+
+				return aIndex - bIndex;
+			});
+
+			players.forEach((player: Player) => {
+				const profile = featuredProfiles.find((profile) => profile.uuid === player.uuid);
+
+				profiles.push({
+					uuid: player.uuid,
+					username: player.username,
+					message: profile?.message || "",
+					rank: getHighestRank(player.ranks)
+				});
+			});
+		} catch (error) {
+			console.error(error);
+			profiles = [];
 		}
+
+		error(
+			404,
+			JSON.stringify({
+				error: playerSearchData.cause,
+				profiles
+			})
+		);
 	}
+
+	return {
+		player: playerSearchData.player,
+		favorites: cookies.get("favorites")
+	};
 };
 
 export const actions = {
