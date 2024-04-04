@@ -80,7 +80,7 @@
 		}
 	}
 
-	let selectedPage: string = "friends";
+	let selectedPage: string = "stats";
 
 	// Placeholder faction data
 	const testData = {
@@ -219,7 +219,7 @@
 					/>
 				{/if}
 			</div>
-			<Factions factionData={testData} />
+			<Factions factionData={testData} generalStats={playerData.statistics?.general} />
 		</div>
 	</div>
 	<div
