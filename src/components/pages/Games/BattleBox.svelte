@@ -6,6 +6,8 @@
 	export let stats: Statistics;
 
 	let battleBoxStats = stats.battle_box;
+
+	const rounds_played = battleBoxStats.games_played * 3;
 </script>
 
 <div id="stats" class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 text-left">
@@ -23,16 +25,13 @@
 		<p>Rounds Won: <span class="font-bold">{battleBoxStats.rounds_won.toLocaleString()}</span></p>
 		<p>
 			Rounds Lost: <span class="font-bold"
-				>{(battleBoxStats.games_played * 3 - battleBoxStats.rounds_won).toLocaleString()}</span
+				>{(rounds_played - battleBoxStats.rounds_won).toLocaleString()}</span
 			>
 		</p>
 		<p>
 			WLR:
 			<span class="font-bold">
-				{(
-					(battleBoxStats.rounds_won / battleBoxStats.games_played) * 3 -
-						battleBoxStats.rounds_won || 0
-				).toFixed(2)}
+				{(battleBoxStats.rounds_won / (rounds_played - battleBoxStats.rounds_won) || 0).toFixed(2)}
 			</span>
 		</p>
 	</div>
