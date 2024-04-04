@@ -7,7 +7,7 @@ import { error } from "@sveltejs/kit";
 export const load = async ({ cookies, params }) => {
 	const searchedPlayer = params.player;
 	const url =
-		env.NODE_ENV == "production"
+		env.ENV == "production"
 			? "https://api.islandstats.xyz/player/"
 			: "http://localhost:3001/player/";
 	const response = await fetch(`${url}/${searchedPlayer}`, {
@@ -46,7 +46,7 @@ export const load = async ({ cookies, params }) => {
 
 		try {
 			const url =
-				env.NODE_ENV == "production"
+				env.ENV == "production"
 					? "https://api.islandstats.xyz/bulk/"
 					: "http://localhost:3001/bulk/";
 			const response = await fetch(url, {
