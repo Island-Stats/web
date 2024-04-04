@@ -7,7 +7,7 @@ import { error } from "@sveltejs/kit";
 export const load = async ({ cookies, params }) => {
 	const searchedPlayer = params.player;
 	const url =
-		env.ENV == "production"
+		env.ENV !== "production"
 			? "https://api.islandstats.xyz/player/"
 			: "http://localhost:3001/player/";
 	const response = await fetch(`${url}/${searchedPlayer}`, {
@@ -132,9 +132,9 @@ export const actions = {
 				{ path: "/", encode: (string) => string }
 			);
 		} else if (favorites.length === 0) {
-			cookies.set("favorites", uuid, { path: "/", encode: (string) => string });
+			cookies.set("favorites", uuid, { path: "/", encode: (string) => string, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365)});
 		} else {
-			cookies.set("favorites", `${favorites},${uuid}`, { path: "/", encode: (string) => string });
+			cookies.set("favorites", `${favorites},${uuid}`, { path: "/", encode: (string) => string, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365)});
 		}
 	}
 };
