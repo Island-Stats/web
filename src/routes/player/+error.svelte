@@ -6,10 +6,19 @@
 	import Search from "../../components/core/Search.svelte";
 	import PlayerHead from "../../components/player/PlayerHead.svelte";
 
-	let errorObject = JSON.parse($page.error?.message ?? "{}");
+	let errorObject;
+	try {
+		errorObject = JSON.parse($page.error?.message ?? "{}");
+	} catch (e) {
+		errorObject = { error: $page.error?.message ?? "An unknown error occurred.", profiles: [] };
+	}
 
 	let profiles = errorObject.profiles ?? [];
 	let error = errorObject.error;
+
+	if (errorObject.error === "Internal Error") {
+		error = "It looks like our API is having issues. Please try again later.";
+	}
 </script>
 
 <svelte:head>
@@ -19,7 +28,7 @@
 		content="
 		Island Stats is a website that allows you to view player stats, leaderboards, and more for the MCC Island server."
 	/>
-	<link rel="icon" href="./favicon.ico" />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <header
@@ -35,11 +44,11 @@
 	<Search />
 	<div class="col-span-full flex flex-row rounded-lg">
 		<p
-			class="w-24 h-20 flex justify-center items-center bg-blue-400 uppercase rounded-l-lg font-semibold"
+			class="w-24 h-20 flex justify-center items-center bg-sky-600 uppercase rounded-l-lg font-semibold"
 		>
 			Error
 		</p>
-		<p class="w-[calc(100%-200px)] h-20 flex justify-center items-center text-center ">
+		<p class="w-[calc(100%-200px)] h-20 flex justify-center items-center text-center">
 			{error}
 		</p>
 	</div>
@@ -47,17 +56,13 @@
 		<p class="text-neutral-200 text-xl font-bold transition-colors">Site preview</p>
 		<p class="text-neutral-200">
 			Island Stats is still in heavy development. Please report any bugs on the{" "}
-			<a href="https://discord.islandstats.xyz/" class="text-blue-200 hover:text-blue-400">
+			<a href="https://discord.islandstats.xyz/" class="text-sky-200 hover:text-sky-400">
 				Discord
 			</a>{" "}
 			or{" "}
-			<a
-				href="https://github.com/Island-Stats/site/issues"
-				class="text-blue-200 hover:text-blue-400"
-			>
+			<a href="https://github.com/Island-Stats/web/issues" class="text-sky-200 hover:text-sky-400">
 				GitHub
-			</a>
-			.
+			</a>.
 		</p>
 	</div>
 	{#if profiles.length === 0}

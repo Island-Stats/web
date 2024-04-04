@@ -1,16 +1,19 @@
 <script lang="ts">
+	import type { GeneralStatistics } from "$lib/schema";
+	import { Tooltip } from "flowbite-svelte";
+
 	const factions = [
-	"red",
-	"orange",
-	"yellow",
-	"lime",
-	"green",
-	"cyan",
-	"aqua",
-	"blue",
-	"purple",
-	"pink",
-];
+		"red",
+		"orange",
+		"yellow",
+		"lime",
+		"green",
+		"cyan",
+		"aqua",
+		"blue",
+		"purple",
+		"pink"
+	];
 
 	type FactionData = {
 		[index: string]: any;
@@ -78,6 +81,7 @@
 	};
 
 	export let factionData: FactionData;
+	export let generalStats: GeneralStatistics | undefined;
 	let selectedFaction: string = factionData.currentFaction;
 
 	function setSelectedFaction(faction: string) {
@@ -85,8 +89,33 @@
 	}
 </script>
 
-<div class="bg-gray-500 bg-opacity-50 p-2 rounded-lg">
-	<p>Placeholder Faction List: This data is made up</p>
+<div class="bg-gray-500 bg-opacity-50 p-2 rounded-lg overflow-visible">
+	<div class="flex justify-between">
+		<p>Placeholder Faction List: Most of this data is made up</p>
+		{#if generalStats}
+			<p
+				class="after:ml-0.5 after:text-neutral-400 after:transition-colors after:duration-200 after:content-['*'] hover:after:text-sky-500"
+			>
+				Total Faction XP:
+				<span>
+					{generalStats.total_faction_xp.toLocaleString()}
+				</span>
+			</p>
+			<Tooltip placement="bottom">
+				<p>XP from quests: <span>{generalStats.quest_faction_xp.toLocaleString()}</span></p>
+				<p>XP from games <span>{generalStats.game_faction_xp.toLocaleString()}</span></p>
+				<br>
+				<i>This data seems to be slightly inaccurate*</i>
+			</Tooltip>
+		{:else}
+			<p
+				class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+			>
+				Total Faction XP: Hidden
+			</p>
+			<Tooltip placement="bottom" arrow>Statistics API setting disabled</Tooltip>
+		{/if}
+	</div>
 	<div class="flex flex-wrap justify-center gap-2">
 		<!-- Faction Icons -->
 		{#each factions as faction}

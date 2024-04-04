@@ -16,7 +16,7 @@
 		content="
 		Island Stats is a website that allows you to view player stats, leaderboards, and more for the MCC Island server."
 	/>
-	<link rel="icon" href="./favicon.ico" />
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
 <header
@@ -35,17 +35,13 @@
 		<p class="text-neutral-200 text-xl font-bold transition-colors">Site preview</p>
 		<p class="text-neutral-200">
 			Island Stats is still in heavy development. Please report any bugs on the{" "}
-			<a href="https://discord.islandstats.xyz/" class="text-blue-200 hover:text-blue-400">
+			<a href="https://discord.islandstats.xyz/" class="text-sky-200 hover:text-sky-400">
 				Discord
 			</a>{" "}
 			or{" "}
-			<a
-				href="https://github.com/Island-Stats/site/issues"
-				class="text-blue-200 hover:text-blue-400"
-			>
-				GitHub
-			</a>
-			.
+			<a href="https://github.com/Island-Stats/web/issues" class="text-sky-200 hover:text-sky-400">
+				GitHub</a
+			>.
 		</p>
 	</div>
 	{#if profiles.length === 0}

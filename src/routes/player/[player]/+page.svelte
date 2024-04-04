@@ -12,6 +12,7 @@
 	import NavSearch from "../../../components/core/NavSearch.svelte";
 	import Friends from "../../../components/pages/Friends.svelte";
 	import Party from "../../../components/pages/Party.svelte";
+	import Stats from "../../../components/pages/Stats.svelte";
 
 	dayjs.extend(relativeTime);
 
@@ -79,7 +80,7 @@
 		}
 	}
 
-	let selectedPage: string = "friends";
+	let selectedPage: string = "stats";
 
 	// Placeholder faction data
 	const testData = {
@@ -218,7 +219,7 @@
 					/>
 				{/if}
 			</div>
-			<Factions factionData={testData} />
+			<Factions factionData={testData} generalStats={playerData.statistics?.general} />
 		</div>
 	</div>
 	<div
@@ -289,7 +290,7 @@
 			{#if playerData.statistics === undefined}
 				<p class="text-center mt-1">Statistics API setting disabled</p>
 			{:else}
-				<p class="text-center mt-1">Coming Soon</p>
+				<Stats stats={playerData.statistics} />
 			{/if}
 		{:else if selectedPage == "friends"}
 			<h3 class="text-2xl font-semibold text-center align-middle">
