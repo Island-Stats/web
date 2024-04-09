@@ -7,14 +7,14 @@ import { error } from "@sveltejs/kit";
 export const load = async ({ cookies, params }) => {
 	const searchedPlayer = params.player;
 	const url =
-		env.ENV == "production"
+		env.ENV === "production"
 			? "https://api.islandstats.xyz/player/"
 			: "http://localhost:3001/player/";
 	const response = await fetch(`${url}/${searchedPlayer}`, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
-			"User-Agent": "IslandStats-Test",
+			"User-Agent": "IslandStats",
 			"API-Key": env.API_KEY
 		}
 	});
@@ -46,14 +46,14 @@ export const load = async ({ cookies, params }) => {
 
 		try {
 			const url =
-				env.ENV == "production"
+				env.ENV === "production"
 					? "https://api.islandstats.xyz/bulk/"
 					: "http://localhost:3001/bulk/";
 			const response = await fetch(url, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					"User-Agent": "IslandStats-Test",
+					"User-Agent": "IslandStats",
 					"API-Key": env.API_KEY
 				},
 				body: JSON.stringify({

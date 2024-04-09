@@ -26,14 +26,14 @@ export const load = async ({ cookies }) => {
 	uuids.push(...featuredProfiles.map((profile) => profile.uuid));
 
 	try {
-		const url = env.ENV == "production"
+		const url = env.ENV === "production"
 			? "https://api.islandstats.xyz/bulk/"
 			: "http://localhost:3001/bulk/";
 		const response = await fetch(url, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"User-Agent": "IslandStats-Test",
+				"User-Agent": "IslandStats",
 				"API-Key": env.API_KEY
 			},
 			body: JSON.stringify({
