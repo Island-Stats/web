@@ -223,7 +223,7 @@
 		</div>
 	</div>
 	<div
-		id="stats"
+		id="currency"
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5 mt-4"
 	>
 		<Currency currency={playerData.collections?.currency} />
