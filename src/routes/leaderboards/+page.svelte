@@ -175,6 +175,10 @@
 			{
 				stat: "$statistics.pkw.survivor.obstacles_completed",
 				name: "Obstacles Completed"
+			},
+			{
+				"stat": "$statistics.general.community_contribution",
+				"name": "PKW Community Contribution"
 			}
 		]
 	} as const satisfies {
