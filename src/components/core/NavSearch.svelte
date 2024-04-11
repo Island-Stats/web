@@ -17,7 +17,7 @@
 	}
 
 	const handleSubmit = () => {
-		window.location.href = validateURL(ign);
+		window.location.href = validateURL(ign.trim());
 	};
 </script>
 
