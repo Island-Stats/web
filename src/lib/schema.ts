@@ -149,7 +149,7 @@ export type SkyBattleStatistics = {
 			wings_to_fly: number;
 			creeper_coffin: number;
 			untouchable_champion: number;
-			personal_feast: 0;
+			personal_feast: number;
 		};
 	};
 	summer: {

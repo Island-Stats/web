@@ -2,7 +2,7 @@
 	import { page } from "$app/stores";
 
 	import { featuredProfiles } from "$lib/featuredProfiles";
-	import About from "../../components/core/About.svelte";
+	import Nav from "../../components/core/Nav.svelte";
 	import Search from "../../components/core/Search.svelte";
 	import PlayerHead from "../../components/player/PlayerHead.svelte";
 
@@ -38,7 +38,7 @@
 		<img src="/icons/logo.png" alt="Island Stats Logo" width={32} height={32} class="mr-0.5" />
 		<p class="">Island Stats</p>
 	</a>
-	<About />
+	<Nav />
 </header>
 <main class="grid">
 	<Search />

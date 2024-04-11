@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { FormEventHandler } from "svelte/elements";
-
 	let ign: string;
 
 	function validateURL(url: string) {
@@ -23,7 +21,7 @@
 	};
 </script>
 
-<form class="relative ml-3 mr-3 sm:ml-auto sm:mr-auto flex max-w-[500px] flex-grow rounded-md bg-neutral-300 p-1 text-base text-white" on:submit|preventDefault={handleSubmit}>
+<form class="relative ml-3 sm:ml-auto sm:mr-auto flex max-w-[500px] flex-grow rounded-md bg-neutral-300 p-1 text-base text-white" on:submit|preventDefault={handleSubmit}>
 		<input
 		id="ign"
 		enterKeyHint="go"
