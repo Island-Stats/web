@@ -766,7 +766,7 @@ export const badges = {
 	[k: string]: Badge[];
 };
 
-type Badge = {
+export type Badge = {
 	name: string;
 	description: string;
 	icon: string;
