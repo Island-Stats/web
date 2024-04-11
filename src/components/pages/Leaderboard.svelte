@@ -29,14 +29,14 @@
 <div>
 	<Table>
 		<TableHead class="bg-neutral-500 text-white">
-			<TableHeadCell class="w-5">#</TableHeadCell>
+			<TableHeadCell class="p-2">#</TableHeadCell>
 			<TableHeadCell class="flex-grow">Username</TableHeadCell>
 			<TableHeadCell class="w-5 text-right">Value</TableHeadCell>
 		</TableHead>
 		<TableBody>
 			{#each pages[currentPage] as item, i}
 				<TableBodyRow class="odd:bg-neutral-700 text-white even:bg-neutral-500">
-					<TableBodyCell class="text-inherit">{i + 1 + currentPage * itemsPerPage}</TableBodyCell>
+					<TableBodyCell class="text-inherit p-2">{i + 1 + currentPage * itemsPerPage}</TableBodyCell>
 					<TableBodyCell class="text-inherit">
 						<a class="flex hover:text-sky-500" href={`/player/${item.uuid}`} target="_blank">
 							{item.username}
@@ -62,9 +62,9 @@
 		>
 			Previous
 		</button>
-		{#each pages as page, index}
+		{#each pages as _, index}
 			<button
-				class="text-white px-3 py-1 rounded-md"
+				class="text-white px-3 py-1 rounded-md hidden sm:block"
 				class:bg-sky-500={currentPage === index}
 				class:bg-neutral-500={currentPage !== index}
 				on:click={() => (currentPage = index)}
