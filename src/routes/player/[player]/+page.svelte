@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Games, type Player } from "$lib/schema";
 	import { Tooltip } from "flowbite-svelte";
-	import About from "../../../components/core/About.svelte";
 	import Factions from "../../../components/player/Factions.svelte";
 	import PlayerModel from "../../../components/player/PlayerModel.svelte";
 	import dayjs from "dayjs";
@@ -13,6 +12,7 @@
 	import Friends from "../../../components/pages/Friends.svelte";
 	import Party from "../../../components/pages/Party.svelte";
 	import Stats from "../../../components/pages/Stats.svelte";
+	import Nav from "../../../components/core/Nav.svelte";
 
 	dayjs.extend(relativeTime);
 
@@ -165,8 +165,8 @@
 		<img src="/icons/logo.png" alt="Island Stats Logo" class="mr-0.5 w-8 h-8 min-w-8" />
 		<p class="hidden sm:block">Island Stats</p>
 	</a>
-	<About />
 	<NavSearch />
+	<Nav />
 </header>
 <main class="backdrop-blur-lg backdrop-brightness-50 md:w-4/5 md:mx-auto min-h-full">
 	<div id="profile" class="flex flex-wrap justify-items-center gap-3 py-5 text-2xl md:text-4xl">

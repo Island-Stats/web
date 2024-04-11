@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type { ActionResult } from "@sveltejs/kit";
-	import About from "../../components/core/About.svelte";
 	import NavSearch from "../../components/core/NavSearch.svelte";
 	import Leaderboard from "../../components/pages/Leaderboard.svelte";
 	import type { ActionData } from "./$types";
 	import { applyAction, deserialize } from "$app/forms";
+	import { badges, type Badge } from "$lib/badges";
+	import Nav from "../../components/core/Nav.svelte";
 
 	const statOptions = {
 		general: [
@@ -154,7 +155,7 @@
 			},
 			{
 				stat: "$statistics.pkw.dojo.total_advanced_cmpls",
-				name: "Total Advance Completions"
+				name: "Total Advanced Completions"
 			},
 			{
 				stat: "$statistics.pkw.dojo.total_standard_cmpls",
@@ -177,18 +178,38 @@
 				name: "Obstacles Completed"
 			},
 			{
-				"stat": "$statistics.general.community_contribution",
-				"name": "PKW Community Contribution"
+				stat: "$statistics.general.community_contribution",
+				name: "PKW Community Contribution"
 			}
 		]
 	} as const satisfies {
 		[key: string]: { stat: string; name: string }[];
 	};
 
+	const badgeOptions = {
+		battle_box: badges.battle_box.map((badge) => ({
+			...badge,
+			stat: `$statistics.battle_box.badges.${badge.stat}`
+		})),
+		dynaball: badges.dynaball.map((badge) => ({
+			...badge,
+			stat: `$statistics.dynaball.badges.${badge.stat}`
+		})),
+		hitw: badges.hitw.map((badge) => ({ ...badge, stat: `$statistics.hitw.badges.${badge.stat}` })),
+		sky_battle: badges.sky_battle.map((badge) => ({
+			...badge,
+			stat: `$statistics.sky_battle.quads.badges.${badge.stat}`
+		})),
+		tgttos: badges.tgttos.map((badge) => ({
+			...badge,
+			stat: `$statistics.tgttos.badges.${badge.stat}`
+		}))
+	};
+
 	type GameName = keyof typeof statOptions;
 
 	let game: GameName;
-	let stat: { stat: string; name: string };
+	let stat: { stat: string; name: string } | Badge;
 
 	export let form: ActionData;
 
@@ -222,10 +243,10 @@
 >
 	<a href="/" class="flex items-center ml-2 md:ml-4 font-semibold">
 		<img src="/icons/logo.png" alt="Island Stats Logo" class="mr-0.5 w-8 h-8 min-w-8" />
-		<p class="hidden sm:block">Island Stats</p>
+		<p>Island Stats</p>
 	</a>
-	<About />
 	<NavSearch />
+	<Nav />
 </header>
 <main class="backdrop-blur-lg backdrop-brightness-50 md:w-4/5 md:mx-auto min-h-full">
 	<div class="flex flex-wrap justify-items-center gap-3 py-5 text-2xl md:text-4xl">
@@ -297,7 +318,10 @@
 				<input type="radio" name="game" value="tgttos" class="hidden" bind:group={game} />
 			</label>
 		</div>
-		<div id="leaderboard-options" class={`mt-4 grid gap-4 mx-auto ${statOptions[game].length < 5 ? `grid-cols-${statOptions[game].length}` : "grid-cols-5"}`}>
+		<div
+			id="leaderboard-options-stats"
+			class={`mt-4 grid gap-4 mx-auto md:${statOptions[game].length < 5 ? `grid-cols-${statOptions[game].length}` : "grid-cols-5"} grid-cols-2`}
+		>
 			{#each statOptions[game] as option}
 				<button
 					class={`rounded-md px-3 py-1 font-semibold text-black ${
@@ -309,6 +333,27 @@
 				</button>
 			{/each}
 		</div>
+		<!-- {#if game !== "general" && game !== "pkw"}
+			<div
+				id="leaderboard-options-badges"
+				class={`mt-4 grid gap-4 mx-auto lg:${statOptions[game].length < 5 ? `grid-cols-${statOptions[game].length}` : "grid-cols-5"} grid-cols-4`}
+			>
+				{#each badgeOptions[game] as badge}
+					<button class="" on:click={() => (stat = badge)}>
+						<img
+							src={`https://cdn.islandstats.xyz/badges/${game}/${badge.icon}.png`}
+							alt={badge.name}
+						/>
+					</button>
+					<Tooltip
+						><div>
+							<h1>{badge.name}</h1>
+							<p>{badge.description}</p>
+						</div></Tooltip
+					>
+				{/each}
+			</div>
+		{/if} -->
 	</form>
 	<div class="mt-4">
 		{#if form}
@@ -321,7 +366,5 @@
 		{:else}
 			<p class="text-center">Select a game to view the leaderboard</p>
 		{/if}
-
-		<!-- <Leaderboard {data} /> -->
 	</div>
 </main>
