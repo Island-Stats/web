@@ -75,7 +75,7 @@
 		],
 		hitw: [
 			{
-				stat: "$statistics.hitwsky_battletgttos.games_played",
+				stat: "$statistics.hitw.games_played",
 				name: "Games Played"
 			},
 			{
