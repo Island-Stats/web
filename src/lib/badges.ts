@@ -627,7 +627,7 @@ export const badges = {
 		{
 			name: "Standard Completionist",
 			description: "Perform a Standard completion on all courses of a PKW Dojo rotation",
-			icon: "pkw/pkw_standard_completionist",
+			icon: "parkour_warrior/pkw_standard_completionist",
 			stat: "unique_rot_standard_cmpl",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
@@ -642,7 +642,7 @@ export const badges = {
 		{
 			name: "Advanced Completionist",
 			description: "Perform an Advanced completion on all courses of a PKW Dojo rotation",
-			icon: "pkw/pkw_advanced_completionist",
+			icon: "parkour_warrior/pkw_advanced_completionist",
 			stat: "unique_rot_advanced_cmpl",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
@@ -657,7 +657,7 @@ export const badges = {
 		{
 			name: "Expert Completionist",
 			description: "Perform an Expert completion on all courses of a PKW Dojo rotation",
-			icon: "pkw/pkw_expert_completionist",
+			icon: "parkour_warrior/pkw_expert_completionist",
 			stat: "unique_rot_expert_cmpl",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
@@ -672,7 +672,7 @@ export const badges = {
 		{
 			name: "Standard Leaper",
 			description: "Perform Standard completions on unique PKW Dojo courses",
-			icon: "pkw/pkw_standard_leaper",
+			icon: "parkour_warrior/pkw_standard_leaper",
 			stat: "unique_standard_cmpl",
 			tiers: [
 				{ name: "I", amount: 7, trophies: 10 },
@@ -687,7 +687,7 @@ export const badges = {
 		{
 			name: "Advanced Leaper",
 			description: "Perform Advanced completions on unique PKW Dojo courses",
-			icon: "pkw/pkw_advanced_leaper",
+			icon: "parkour_warrior/pkw_advanced_leaper",
 			stat: "unique_advanced_cmpl",
 			tiers: [
 				{ name: "I", amount: 7, trophies: 10 },
@@ -702,7 +702,7 @@ export const badges = {
 		{
 			name: "Expert Leaper",
 			description: "Perform Expert completions on unique PKW Dojo courses",
-			icon: "pkw/pkw_expert_leaper",
+			icon: "parkour_warrior/pkw_expert_leaper",
 			stat: "unique_expert_cmpl",
 			tiers: [
 				{ name: "I", amount: 7, trophies: 10 },
@@ -719,7 +719,7 @@ export const badges = {
 		{
 			name: "PKW Champion",
 			description: "Win the final duel in games of Parkour Warrior Survivor",
-			icon: "pkw/parkour_warrior_champion",
+			icon: "parkour_warrior/parkour_warrior_champion",
 			stat: "final_duel_wins",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
@@ -734,7 +734,7 @@ export const badges = {
 		{
 			name: "PKW Finalist",
 			description: "Complete Leap 6 in games of Parkour Warrior Survivor",
-			icon: "pkw/parkour_warrior_finalist",
+			icon: "parkour_warrior/parkour_warrior_finalist",
 			stat: "leap_6_completion",
 			tiers: [
 				{ name: "I", amount: 10, trophies: 10 },
@@ -749,7 +749,7 @@ export const badges = {
 		{
 			name: "PKW Assassin",
 			description: "Eliminate players in games of Parkour Warrior Survivor",
-			icon: "pkw/parkour_warrior_ninja",
+			icon: "parkour_warrior/parkour_warrior_ninja",
 			stat: "players_eliminated",
 			tiers: [
 				{ name: "I", amount: 100, trophies: 10 },
