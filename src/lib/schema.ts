@@ -4,12 +4,31 @@ export type Player = {
 	uuid: string;
 	username: string;
 	ranks: RankName[];
+	crownLevel: CrownLevel;
 	collections?: Collection;
 	social?: Social;
 	status?: Status;
 	statistics?: Statistics;
 	lastUpdated: number;
 };
+
+// Crown Level Types
+
+export type CrownLevel = {
+	level: number;
+	skill: {
+		obtained: number;
+		obtainable: number;
+		bonus: number;
+	}
+	style: {
+		obtained: number;
+		obtainable: number;
+		bonus: number;
+	}
+};
+
+// Collection Types
 
 type Collection = {
 	currency: Currency;
@@ -49,13 +68,14 @@ type Status = {
 // Statistics Types
 
 export type Statistics = {
+	general: GeneralStatistics;
 	battle_box: BattleBoxStatistics;
 	sky_battle: SkyBattleStatistics;
 	tgttos: TGTTOSStatistics;
 	hitw: HoleInTheWallStatistics;
 	pkw: ParkourWarriorStatistics;
 	dynaball: DynaballStatistics;
-	general: GeneralStatistics;
+	rsr: RocketSpleefRushStatistics;
 };
 
 // Currency Types
@@ -79,6 +99,14 @@ type Server = {
 type ServerCategory = "LOBBY" | "GAME" | "LIMBO" | "QUEUE";
 
 // Game Statistics Types
+
+export type GeneralStatistics = {
+	total_faction_xp: number;
+	game_faction_xp: number;
+	quest_faction_xp: number;
+	games_played: number;
+	community_contribution: number;
+};
 
 export type BattleBoxStatistics = {
 	games_played: number;
@@ -295,12 +323,29 @@ export type ParkourWarriorStatistics = {
 	};
 };
 
-export type GeneralStatistics = {
-	total_faction_xp: number;
-	game_faction_xp: number;
-	quest_faction_xp: number;
+export type RocketSpleefRushStatistics = {
 	games_played: number;
-	community_contribution: number;
+	rockets_fired: number;
+	kills: number;
+	melee_kills: number;
+	deaths: number;
+	team_kills: number;
+	first_place: number;
+	top_three: number;
+	top_five: number;
+	top_eight: number;
+	survived_minute: number;
+	players_outlived: number;
+	badges: {
+		direct_hits: number;
+		fast_triple_kill: number;
+		fast_punch: number;
+		win_above_half_durability: number;
+		win_without_updraft: number;
+		eliminate_5_players: number;
+		survive_60s_without_gliding: number;
+		distant_direct: number;
+	};
 };
 
 // Game Types
@@ -324,11 +369,16 @@ export const Games = {
 	},
 	PARKOUR_WARRIOR: {
 		name: "Parkour Warrior",
-		image: "pkw/icon.png"
+		image: "parkour_warrior/icon.png"
 	},
 	DYNABALL: {
 		name: "Dynaball",
 		image: "dynaball/icon.png"
+	},
+	ROCKET_SPLEEF: {
+		name: "Rocket Spleef Rush",
+		image: "rocket_spleef/icon.png"
+	
 	}
 } as const satisfies {
 	[k: string]: {
@@ -338,3 +388,15 @@ export const Games = {
 };
 
 export type GameName = keyof typeof Games;
+
+// Leaderboard Types
+
+export type Leaderboard = LeaderboardPlayer[];
+
+export type LeaderboardPlayer = {
+	uuid: string;
+	username: string;
+	ranks: RankName[];
+	value: number;
+	placement: number;
+};
