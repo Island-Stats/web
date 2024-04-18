@@ -761,6 +761,141 @@ export const badges = {
 				{ name: "VII", amount: 8000, trophies: 100 }
 			]
 		}
+	],
+	rocket_spleef: [
+		{
+			name: "Advanced Tactics",
+			description: "Survive the first 60 seconds of a game without deploying your elytra once",
+			icon: "rocket_spleef/advanced_tactics",
+			stat: "survive_60s_without_gliding",
+			trophies: 50
+		},
+		{
+			name: "Careful Glider",
+			description: "Win a game without ever dropping below 50% durability",
+			icon: "rocket_spleef/careful_glider",
+			stat: "win_above_half_durability",
+			trophies: 70
+		},
+		{
+			name: "Flawless Rocketeer",
+			description: "Win a game without using an updraft",
+			icon: "rocket_spleef/flawless_rocketeer",
+			stat: "win_without_updraft",
+			trophies: 50
+		},
+		{
+			name: "Rocket Brawler",
+			description: "Punch 3 unique players within 10 seconds",
+			icon: "rocket_spleef/rocket_brawler",
+			stat: "fast_punch",
+			trophies: 30
+		},
+		{
+			name: "Rocket Rush",
+			description: "Eliminate 3 players with 20 seconds",
+			icon: "rocket_spleef/rocket_rush",
+			stat: "fast_triple_kill",
+			trophies: 100
+		},
+		{
+			name: "Spleef Sniper",
+			description: "Land a direct rocket hit on a player that is at least 40 blocks away",
+			icon: "rocket_spleef/rocket_spleef_sniper",
+			stat: "distant_direct",
+			trophies: 70
+		},
+		{
+			name: "Spleef Slapdown",
+			description: "Eliminate a player by punching them into the void before they next land",
+			icon: "rocket_spleef/spleef_slapdown",
+			stat: "melee_kills",
+			trophies: 30
+		},
+		{
+			name: "Ultimate Rocketeer",
+			description: "Eliminate 5 players in a single game",
+			icon: "rocket_spleef/ultimate_rocketeer",
+			stat: "eliminate_5_players",
+			trophies: 100
+		}
+	],
+	rocket_spleef_tiered: [
+		{
+			name: "Rocket Spleef Champion",
+			description: "Place 1st in games of Rocket Spleef Rush",
+			icon: "rocket_spleef/rocket_spleef_champion",
+			stat: "first_place",
+			tiers: [
+				{ name: "I", amount: 2, trophies: 10 },
+				{ name: "II", amount: 5, trophies: 20 },
+				{ name: "III", amount: 10, trophies: 30 },
+				{ name: "IV", amount: 25, trophies: 50 },
+				{ name: "V", amount: 50, trophies: 75 },
+				{ name: "VI", amount: 100, trophies: 100 },
+				{ name: "VII", amount: 150, trophies: 125 }
+			]
+		},
+		{
+			name: "Rocket Spleef Expert",
+			description: "Place in the top 5 in games of Rocket Spleef Rush",
+			icon: "rocket_spleef/rocket_spleef_expert",
+			stat: "top_five",
+			tiers: [
+				{ name: "I", amount: 10, trophies: 10 },
+				{ name: "II", amount: 30, trophies: 20 },
+				{ name: "III", amount: 75, trophies: 30 },
+				{ name: "IV", amount: 150, trophies: 50 },
+				{ name: "V", amount: 275, trophies: 75 },
+				{ name: "VI", amount: 450, trophies: 100 },
+				{ name: "VII", amount: 800, trophies: 125 }
+			]
+		},
+		{
+			name: "Rocket Spleef Glider",
+			description: "Survive for at least 1 minute in games of Rocket Spleef Rush",
+			icon: "rocket_spleef/rocket_spleef_glider",
+			stat: "survived_minute",
+			tiers: [
+				{ name: "I", amount: 20, trophies: 10 },
+				{ name: "II", amount: 60, trophies: 20 },
+				{ name: "III", amount: 150, trophies: 30 },
+				{ name: "IV", amount: 300, trophies: 50 },
+				{ name: "V", amount: 550, trophies: 75 },
+				{ name: "VI", amount: 950, trophies: 100 },
+				{ name: "VII", amount: 1500, trophies: 125 }
+			]
+		},
+		{
+			name: "Rocket Spleef Warrior",
+			description: "Land direct hits with rockets during games of Rocket Spleef Rush",
+			icon: "rocket_spleef/rocket_spleef_warrior",
+			stat: "direct_hits",
+			tiers: [
+				{ name: "I", amount: 50, trophies: 10 },
+				{ name: "II", amount: 150, trophies: 20 },
+				{ name: "III", amount: 350, trophies: 30 },
+				{ name: "IV", amount: 750, trophies: 50 },
+				{ name: "V", amount: 1350, trophies: 75 },
+				{ name: "VI", amount: 2500, trophies: 100 },
+				{ name: "VII", amount: 4000, trophies: 125 }
+			]
+		},
+		{
+			name: "Rocket Spleef Survivor",
+			description: "Outlive players during games of Rocket Spleef Rush",
+			icon: "rocket_spleef/rocket_spleef_survivor",
+			stat: "players_outlived",
+			tiers: [
+				{ name: "I", amount: 150, trophies: 10 },
+				{ name: "II", amount: 500, trophies: 20 },
+				{ name: "III", amount: 1100, trophies: 30 },
+				{ name: "IV", amount: 2500, trophies: 50 },
+				{ name: "V", amount: 4500, trophies: 75 },
+				{ name: "VI", amount: 7500, trophies: 100 },
+				{ name: "VII", amount: 12500, trophies: 125 }
+			]
+		}
 	]
 } as const satisfies {
 	[k: string]: Badge[];
