@@ -327,9 +327,9 @@ export type RocketSpleefRushStatistics = {
 	games_played: number;
 	rockets_fired: number;
 	kills: number;
-	melee_kills: number;
 	deaths: number;
 	team_kills: number;
+	direct_hits: number;
 	first_place: number;
 	top_three: number;
 	top_five: number;
@@ -337,7 +337,7 @@ export type RocketSpleefRushStatistics = {
 	survived_minute: number;
 	players_outlived: number;
 	badges: {
-		direct_hits: number;
+		melee_kills: number;
 		fast_triple_kill: number;
 		fast_punch: number;
 		win_above_half_durability: number;
