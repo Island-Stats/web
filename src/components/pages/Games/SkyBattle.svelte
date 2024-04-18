@@ -9,7 +9,6 @@
 
 	$: skyBattleStats = stats.sky_battle[page];
 
-	console.log(page);
 </script>
 
 <div class="flex justify-center space-x-2 mt-5">
@@ -17,7 +16,6 @@
 		class={`rounded-lg p-2 font-semibold text-black transition-colors duration-500 ${page == "quads" ? "bg-teal-400" : "bg-neutral-200 hover:bg-teal-200"}`}
 		on:click={() => {
 			page = "quads";
-			console.log("quads");
 		}}
 	>
 		Quads
@@ -26,7 +24,6 @@
 		class={`rounded-lg p-2 font-semibold text-black transition-colors duration-500 ${page == "summer" ? "bg-teal-400" : "bg-neutral-200 hover:bg-teal-200"}`}
 		on:click={() => {
 			page = "summer";
-			console.log("summer");
 		}}
 	>
 		Water Fight
@@ -230,7 +227,7 @@
 		{#each badges.sky_battle as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
-					src={`https://cdn.islandstats.xyz/badges/sky_battle/${badge.icon}.png`}
+					src={`https://cdn.islandstats.xyz/badges/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
 					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
 					class:grayscale={skyBattleStats.badges[badge.stat] === 0}
@@ -258,7 +255,7 @@
 		{#each badges.sky_battle_tiered as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
-					src={`https://cdn.islandstats.xyz/badges/sky_battle/${badge.icon}.png`}
+					src={`https://cdn.islandstats.xyz/badges/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
 					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
 					class:grayscale={skyBattleStats[badge.stat] === 0}
