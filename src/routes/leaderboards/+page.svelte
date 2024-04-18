@@ -237,6 +237,11 @@
 
 <svelte:head>
 	<title>Leaderboards | Island Stats</title>
+	<meta
+		name="description"
+		content="View the leaderboards for various games and stats on MCC Island."
+	/>
+	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 <header
 	class="fixed top-0 left-0 right-0 h-12 bg-neutral-800 flex flex-row items-center z-50 text-lg justify-between"
