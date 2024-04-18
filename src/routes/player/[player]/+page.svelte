@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Games, type Player } from "$lib/schema";
 	import { Tooltip } from "flowbite-svelte";
-	import Factions from "../../../components/player/Factions.svelte";
 	import PlayerModel from "../../../components/player/PlayerModel.svelte";
 	import dayjs from "dayjs";
 	import relativeTime from "dayjs/plugin/relativeTime";
@@ -9,6 +8,7 @@
 	import SocialButtons from "../../../components/core/SocialButtons.svelte";
 	import Currency from "../../../components/player/Currency.svelte";
 	import NavSearch from "../../../components/core/NavSearch.svelte";
+	import CrownLevel from "../../../components/player/CrownLevel.svelte";
 	import Friends from "../../../components/pages/Friends.svelte";
 	import Party from "../../../components/pages/Party.svelte";
 	import Stats from "../../../components/pages/Stats.svelte";
@@ -40,7 +40,7 @@
 						default: {
 							const subType: string = playerData.status.server.subType;
 							status.text = `Playing ${game.name} Dojo`;
-							status.icon = "pkw/solo/" + subType.replace("main-", "") + ".png";
+							status.icon = "parkour_warrior/solo/" + subType.replace("main-", "") + ".png";
 							break;
 						}
 					}
@@ -83,69 +83,6 @@
 	let selectedPage: string = "stats";
 
 	// Placeholder faction data
-	const testData = {
-		currentFaction: "aqua",
-		red: {
-			level: 0,
-			prestige: 0,
-			current: 0,
-			max: 1000
-		},
-		orange: {
-			level: 0,
-			prestige: 1,
-			current: 500,
-			max: 1000
-		},
-		yellow: {
-			level: 0,
-			prestige: 2,
-			current: 1000,
-			max: 1000
-		},
-		lime: {
-			level: 0,
-			prestige: 1,
-			current: 500,
-			max: 1000
-		},
-		green: {
-			level: 0,
-			prestige: 0,
-			current: 0,
-			max: 1000
-		},
-		cyan: {
-			level: 0,
-			prestige: 0,
-			current: 0,
-			max: 1000
-		},
-		aqua: {
-			level: 0,
-			prestige: 1,
-			current: 500,
-			max: 1000
-		},
-		blue: {
-			level: 0,
-			prestige: 2,
-			current: 1000,
-			max: 1000
-		},
-		purple: {
-			level: 0,
-			prestige: 1,
-			current: 500,
-			max: 1000
-		},
-		pink: {
-			level: 0,
-			prestige: 0,
-			current: 0,
-			max: 1000
-		}
-	};
 </script>
 
 <svelte:head>
@@ -219,7 +156,7 @@
 					/>
 				{/if}
 			</div>
-			<Factions factionData={testData} generalStats={playerData.statistics?.general} />
+			<CrownLevel crownLevelData={playerData.crownLevel} />
 		</div>
 	</div>
 	<div

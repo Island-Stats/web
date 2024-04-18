@@ -169,7 +169,7 @@
 		{#each badges.battle_box as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
-					src={`https://cdn.islandstats.xyz/badges/battle_box/${badge.icon}.png`}
+					src={`https://cdn.islandstats.xyz/badges/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
 					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
 					class:grayscale={battleBoxStats.badges[badge.stat] === 0}
@@ -197,7 +197,7 @@
 		{#each badges.battle_box_tiered as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
-					src={`https://cdn.islandstats.xyz/badges/battle_box/${badge.icon}.png`}
+					src={`https://cdn.islandstats.xyz/badges/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
 					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
 					class:grayscale={battleBoxStats[badge.stat] === 0}

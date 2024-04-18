@@ -53,6 +53,13 @@
 	--legendary-dark: #974c00;
 	--mythic: #f64141;
 	--mythic-dark: #942727;
+	/* Trophy Colors */
+	--style-trophy: #e86bff;
+	--style-trophy-dark: #c039ff;
+	--skill-trophy: #ff9f82;
+	--skill-trophy-dark: #ff6439;
+	--total-trophy: #ffea00;
+	--total-trophy-dark: #ffae00;
 }
 
 :root .faction-colors {
@@ -133,7 +140,9 @@ main.grid > * {
 	right: 0;
 	visibility: hidden;
 	background-color: rgba(0, 0, 0, 0);
-	transition: background-color 0.3s ease-in-out, visibility 0.3s linear;
+	transition:
+		background-color 0.3s ease-in-out,
+		visibility 0.3s linear;
 }
 
 .expander[aria-expanded="true"]::before {
@@ -163,9 +172,7 @@ main.grid > * {
 .expander + .expandable {
 	position: fixed;
 	top: calc(48px + env(safe-area-inset-top, 0));
-	max-height: calc(
-		100vh - 48px - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0)
-	);
+	max-height: calc(100vh - 48px - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0));
 	box-sizing: border-box;
 	margin: 0;
 	overflow-y: auto;
@@ -175,7 +182,9 @@ main.grid > * {
 	background-color: rgba(var(--grey_background-rgb), 0.95);
 	visibility: hidden;
 	clip-path: circle(0% at var(--clip-center));
-	transition: clip-path 0.3s ease-in-out, visibility 0.3s linear;
+	transition:
+		clip-path 0.3s ease-in-out,
+		visibility 0.3s linear;
 }
 
 .expandable a {
@@ -194,3 +203,22 @@ main.grid > * {
 	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
 }
 
+.dropdown-menu {
+	position: absolute;
+	z-index: 1000;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	color: #000000;
+}

@@ -4,6 +4,7 @@
 	import Dynaball from "./Games/Dynaball.svelte";
 	import HoleInTheWall from "./Games/HoleInTheWall.svelte";
 	import ParkourWarrior from "./Games/ParkourWarrior.svelte";
+	import RocketSpleefRush from "./Games/RocketSpleefRush.svelte";
 	import SkyBattle from "./Games/SkyBattle.svelte";
 	import Tgttos from "./Games/TGTTOS.svelte";
 
@@ -12,7 +13,9 @@
 	let page = "battle_box";
 </script>
 
-<p class="text-center">Total Games Played <span>{stats.general.games_played.toLocaleString()}</span></p>
+<p class="text-center">
+	Total Games Played <span>{stats.general.games_played.toLocaleString()}</span>
+</p>
 <div class="flex justify-center space-x-2 mt-5">
 	<button on:click={() => (page = "battle_box")}>
 		<img
@@ -42,8 +45,16 @@
 		<img
 			class="transition-filter duration-500 hover:grayscale-0"
 			class:grayscale={page !== "parkour_warrior"}
-			src="https://cdn.islandstats.xyz/games/pkw/icon.png"
+			src="https://cdn.islandstats.xyz/games/parkour_warrior/icon.png"
 			alt="Parkour Warrior Dojo"
+		/>
+	</button>
+	<button on:click={() => (page = "rsr")}>
+		<img
+			class="transition-filter duration-500 hover:grayscale-0"
+			class:grayscale={page !== "rsr"}
+			src="https://cdn.islandstats.xyz/games/rocket_spleef/icon.png"
+			alt="Rocket Spleef Rush"
 		/>
 	</button>
 	<button on:click={() => (page = "sky_battle")}>
@@ -66,17 +77,19 @@
 
 <div>
 	{#if page === "battle_box"}
-		<BattleBox stats={stats} />
+		<BattleBox {stats} />
 	{:else if page === "dynaball"}
-		<Dynaball stats={stats} />
+		<Dynaball {stats} />
 	{:else if page === "hole_in_the_wall"}
-		<HoleInTheWall stats={stats} />
+		<HoleInTheWall {stats} />
 	{:else if page === "parkour_warrior"}
-		<ParkourWarrior stats={stats} />
+		<ParkourWarrior {stats} />
+	{:else if page === "rsr"}
+		<RocketSpleefRush {stats} />
 	{:else if page === "sky_battle"}
-		<SkyBattle stats={stats} />
+		<SkyBattle {stats} />
 	{:else if page === "tgttos"}
-		<Tgttos stats={stats} />
+		<Tgttos {stats} />
 	{:else}
 		<p>Page not found</p>
 	{/if}

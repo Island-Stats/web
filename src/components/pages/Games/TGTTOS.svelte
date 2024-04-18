@@ -160,7 +160,7 @@
 		{#each badges.tgttos as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
-					src={`https://cdn.islandstats.xyz/badges/tgttos/${badge.icon}.png`}
+					src={`https://cdn.islandstats.xyz/badges/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
 					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
 					class:grayscale={tgttosStats.badges[badge.stat] === 0}
@@ -186,7 +186,7 @@
 		{#each badges.tgttos_tiered as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
-					src={`https://cdn.islandstats.xyz/badges/tgttos/${badge.icon}.png`}
+					src={`https://cdn.islandstats.xyz/badges/${badge.icon}.png`}
 					alt={`Badge icon of ${badge.name}`}
 					class="h-12 w-12 rounded-lg transition-filter duration-500 group-hover:grayscale-0 sm:h-16 sm:w-16"
 					class:grayscale={tgttosStats[badge.stat] === 0}

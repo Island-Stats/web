@@ -294,7 +294,7 @@
 				<img
 					class="transition-filter duration-500 hover:grayscale-0"
 					class:grayscale={game !== "pkw"}
-					src="https://cdn.islandstats.xyz/games/pkw/icon.png"
+					src="https://cdn.islandstats.xyz/games/parkour_warrior/icon.png"
 					alt="Parkour Warrior"
 				/>
 				<input type="radio" name="game" value="pkw" class="hidden" bind:group={game} />
