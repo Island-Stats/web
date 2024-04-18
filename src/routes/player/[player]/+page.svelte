@@ -13,6 +13,7 @@
 	import Party from "../../../components/pages/Party.svelte";
 	import Stats from "../../../components/pages/Stats.svelte";
 	import Nav from "../../../components/core/Nav.svelte";
+	import { Ranks, getHighestRank } from "$lib/ranks";
 
 	dayjs.extend(relativeTime);
 
@@ -87,10 +88,17 @@
 
 <svelte:head>
 	<title>{playerData.username} | Island Stats</title>
+	<meta name="description" content={`View ${playerData.username}'s stats on Island Stats, including game stats, currency, socials and more!`} />
 	<meta
-		name="description"
-		content="
-		Island Stats is a website that allows you to view player stats, leaderboards, and more for the MCC Island server."
+		name="og:description"
+		content={[
+			`Rank: ${Ranks[getHighestRank(playerData.ranks)].name}`,
+			"", // Empty line
+			`Crown Level: ${playerData.crownLevel.level.toLocaleString()}`,
+			`Total Trophies: ${(playerData.crownLevel.skill.obtained + playerData.crownLevel.style.obtained).toLocaleString()}`,
+			`Skill Trophies: ${playerData.crownLevel.skill.obtained.toLocaleString()}`,
+			`Style Trophies: ${playerData.crownLevel.style.obtained.toLocaleString()}`
+		].join("\n")}
 	/>
 	<link rel="icon" href={`https://mc-heads.net/avatar/${playerData.uuid}/128`} />
 </svelte:head>
