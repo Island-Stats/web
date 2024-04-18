@@ -52,7 +52,7 @@
 			Rockets Fired: <span class="font-bold">{rsrStats.rockets_fired.toLocaleString()}</span>
 		</p>
 		<p>
-			Melee Kills: <span class="font-bold">{rsrStats.badges.melee_kills.toLocaleString()}</span>
+			Direct Hits: <span class="font-bold">{rsrStats.direct_hits.toLocaleString()}</span>
 		</p>
 		<p>
 			Players Outlived:
