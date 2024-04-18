@@ -89,6 +89,7 @@
 <svelte:head>
 	<title>{playerData.username} | Island Stats</title>
 	<meta name="description" content={`View ${playerData.username}'s stats on Island Stats, including game stats, currency, socials and more!`} />
+	<meta name="og:title" content={`${playerData.username} | Island Stats`} />
 	<meta
 		name="og:description"
 		content={[
