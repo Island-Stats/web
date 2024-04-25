@@ -10,7 +10,7 @@
 		<div class="grid grid-cols-2 md:grid-cols-5 justify-items-start md:justify-items-center">
 			<div class="flex items-center">
 				<img
-					src="https://cdn.islandstats.xyz/icons/coin.png"
+					src="https://cdn.islandstats.xyz/icons/currency/coin.png"
 					alt="Coins"
 					title="Coins"
 					width={32}
@@ -26,7 +26,7 @@
 			</div>
 			<div class="flex items-center">
 				<img
-					src="https://cdn.islandstats.xyz/icons/gem.png"
+					src="https://cdn.islandstats.xyz/icons/currency/gem.png"
 					alt="Gems"
 					title="Gems"
 					width={32}
@@ -42,7 +42,7 @@
 			</div>
 			<div class="flex items-center">
 				<img
-					src="https://cdn.islandstats.xyz/icons/material_dust.png"
+					src="https://cdn.islandstats.xyz/icons/currency/material_dust.png"
 					alt="Material Dust"
 					title="Material Dust"
 					width={32}
@@ -58,7 +58,7 @@
 			</div>
 			<div class="flex items-center">
 				<img
-					src="https://cdn.islandstats.xyz/icons/silver.png"
+					src="https://cdn.islandstats.xyz/icons/currency/silver.png"
 					alt="Silver"
 					title="Silver"
 					width={32}
@@ -74,7 +74,7 @@
 			</div>
 			<div class="col-span-2 mx-auto flex items-center md:col-auto">
 				<img
-					src="https://cdn.islandstats.xyz/icons/royal_reputation.png"
+					src="https://cdn.islandstats.xyz/icons/currency/royal_reputation.png"
 					alt="Royal Reputation"
 					title="Royal Reputation"
 					width={32}
