@@ -17,7 +17,7 @@
 				calculateTrophies(dynaballStats, badges.dynaball_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div>
 		<p>Games Won: <span class="font-bold">{dynaballStats.wins.toLocaleString()}</span></p>
@@ -122,7 +122,7 @@
 		<span class="ml-1">
 			{calculateTrophies(dynaballStats, badges.dynaball).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 		{#each badges.dynaball as badge}
@@ -150,7 +150,7 @@
 		<span class="ml-1">
 			{calculateTrophies(dynaballStats, badges.dynaball_tiered).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.dynaball_tiered as badge}

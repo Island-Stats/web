@@ -17,7 +17,7 @@
 				calculateTrophies(tgttosStats, badges.tgttos_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div>
 		<p>
@@ -154,7 +154,7 @@
 	<h3 class="text-xl font-bold mt-5 flex">
 		Badges &bull;
 		<span class="ml-1">{calculateTrophies(tgttosStats, badges.tgttos)}</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
 		{#each badges.tgttos as badge}
@@ -180,7 +180,7 @@
 	<h3 class="text-xl font-bold mt-5 flex">
 		Tiered Badges &bull;
 		<span class="ml-1">{calculateTrophies(tgttosStats, badges.tgttos_tiered)}</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.tgttos_tiered as badge}

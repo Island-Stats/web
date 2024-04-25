@@ -8,7 +8,6 @@
 	let page: "quads" | "summer" = "quads";
 
 	$: skyBattleStats = stats.sky_battle[page];
-
 </script>
 
 <div class="flex justify-center space-x-2 mt-5">
@@ -38,7 +37,11 @@
 				calculateTrophies(skyBattleStats, badges.sky_battle_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img
+			src="https://cdn.islandstats.xyz/icons/trophies/yellow.png"
+			alt="Trophy icon"
+			class="h-8 ml-1"
+		/>
 	</h3>
 	<div>
 		<p>
@@ -149,40 +152,32 @@
 		<p>
 			Team 2nd Places:
 			<span class="font-bold">
-				{(skyBattleStats.team_second_place - skyBattleStats.team_first_place).toLocaleString()}
+				{skyBattleStats.team_second_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({(
-					((skyBattleStats.team_second_place - skyBattleStats.team_first_place) /
-						skyBattleStats.games_played) *
-						100 || 0
-				).toFixed(0)}%)
+				({((skyBattleStats.team_second_place / skyBattleStats.games_played) * 100 || 0).toFixed(
+					0
+				)}%)
 			</span>
 		</p>
 		<p>
 			Team 3rd Places:
 			<span class="font-bold">
-				{(skyBattleStats.team_third_place - skyBattleStats.team_second_place).toLocaleString()}
+				{skyBattleStats.team_third_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({(
-					((skyBattleStats.team_third_place - skyBattleStats.team_second_place) /
-						skyBattleStats.games_played) *
-						100 || 0
-				).toFixed(0)}%)
+				({((skyBattleStats.team_third_place / skyBattleStats.games_played) * 100 || 0).toFixed(0)}%)
 			</span>
 		</p>
 		<p>
 			Team 4th Places:
 			<span class="font-bold">
-				{(skyBattleStats.team_fourth_place - skyBattleStats.team_third_place).toLocaleString()}
+				{skyBattleStats.team_fourth_place.toLocaleString()}
 			</span>
 			<span class="text-neutral-400">
-				({(
-					((skyBattleStats.team_fourth_place - skyBattleStats.team_third_place) /
-						skyBattleStats.games_played) *
-						100 || 0
-				).toFixed(0)}%)
+				({((skyBattleStats.team_fourth_place / skyBattleStats.games_played) * 100 || 0).toFixed(
+					0
+				)}%)
 			</span>
 		</p>
 	</div>
@@ -221,7 +216,11 @@
 		<span class="ml-1">
 			{calculateTrophies(skyBattleStats, badges.sky_battle).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img
+			src="https://cdn.islandstats.xyz/icons/trophies/yellow.png"
+			alt="Trophy icon"
+			class="h-8 ml-1"
+		/>
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 		{#each badges.sky_battle as badge}
@@ -249,7 +248,11 @@
 		<span class="ml-1">
 			{calculateTrophies(skyBattleStats, badges.sky_battle_tiered).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img
+			src="https://cdn.islandstats.xyz/icons/trophies/yellow.png"
+			alt="Trophy icon"
+			class="h-8 ml-1"
+		/>
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
 		{#each badges.sky_battle_tiered as badge}

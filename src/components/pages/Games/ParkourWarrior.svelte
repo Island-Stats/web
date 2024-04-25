@@ -17,7 +17,7 @@
 				calculateTrophies(parkourWarriorStats.survivor, badges.survivor_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<h3 class="text-xl font-bold flex col-span-full">Dojo Stats</h3>
 	<div>
@@ -128,7 +128,7 @@
 		<span class="ml-1"
 			>{calculateTrophies(parkourWarriorStats.dojo, badges.dojo_tiered).toLocaleString()}</span
 		>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.dojo_tiered as badge}
@@ -173,7 +173,7 @@
 		<span class="ml-1">
 			{calculateTrophies(parkourWarriorStats.survivor, badges.survivor_tiered).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophy.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.survivor_tiered as badge}
