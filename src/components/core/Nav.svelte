@@ -1,4 +1,4 @@
-<div class="align-middle ml-auto">
+<div class="align-middle">
 	<button
 		class="expander ml-4"
 		aria-expanded={false}
