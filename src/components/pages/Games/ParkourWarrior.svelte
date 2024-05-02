@@ -17,7 +17,7 @@
 				calculateTrophies(parkourWarriorStats.survivor, badges.survivor_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<h3 class="text-xl font-bold flex col-span-full">Dojo Stats</h3>
 	<div>
@@ -128,7 +128,7 @@
 		<span class="ml-1"
 			>{calculateTrophies(parkourWarriorStats.dojo, badges.dojo_tiered).toLocaleString()}</span
 		>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.dojo_tiered as badge}
@@ -140,10 +140,19 @@
 					class:grayscale={parkourWarriorStats.dojo[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(parkourWarriorStats.dojo[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(parkourWarriorStats.dojo[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="mx-1">&bull;</span>
+						<img
+							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+							alt="Trophy icon"
+							class="h-6"
+						/>
+						{calculateTrophies(parkourWarriorStats.dojo, [badge]).toLocaleString()}
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if parkourWarriorStats.dojo[badge.stat] >= tier.amount}
@@ -173,7 +182,7 @@
 		<span class="ml-1">
 			{calculateTrophies(parkourWarriorStats.survivor, badges.survivor_tiered).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.survivor_tiered as badge}
@@ -185,10 +194,19 @@
 					class:grayscale={parkourWarriorStats.survivor[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(parkourWarriorStats.survivor[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(parkourWarriorStats.survivor[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="mx-1">&bull;</span>
+						<img
+							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+							alt="Trophy icon"
+							class="h-6"
+						/>
+						{calculateTrophies(parkourWarriorStats.survivor, [badge]).toLocaleString()}
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if parkourWarriorStats.survivor[badge.stat] >= tier.amount}

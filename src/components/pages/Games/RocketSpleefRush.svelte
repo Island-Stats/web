@@ -17,7 +17,7 @@
 				calculateTrophies(rsrStats, badges.rocket_spleef_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div>
 		<p>
@@ -102,7 +102,7 @@
 	<h3 class="text-xl font-bold mt-5 flex">
 		Badges &bull;
 		<span class="ml-1">{calculateTrophies(rsrStats, badges.rocket_spleef)}</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
 		{#each badges.rocket_spleef as badge}
@@ -114,9 +114,16 @@
 					class:grayscale={rsrStats.badges[badge.stat] === 0}
 				/>
 				<div class="flex flex-col">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-					</p>
+					<div class="flex font-semibold">
+						<p>{badge.name}</p>
+						<span class="mx-1">&bull;</span>
+						<img
+							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+							alt="Trophy icon"
+							class="h-6"
+						/>
+						{badge.trophies.toLocaleString()}
+					</div>
 					<p>Completed {rsrStats.badges[badge.stat]} times</p>
 				</div>
 			</div>
@@ -128,7 +135,7 @@
 	<h3 class="text-xl font-bold mt-5 flex">
 		Tiered Badges &bull;
 		<span class="ml-1">{calculateTrophies(rsrStats, badges.rocket_spleef_tiered)}</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.rocket_spleef_tiered as badge}
@@ -140,10 +147,19 @@
 					class:grayscale={rsrStats[badge.stat] < badge.tiers[0].amount}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(rsrStats[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(rsrStats[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="mx-1">&bull;</span>
+						<img
+							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+							alt="Trophy icon"
+							class="h-6"
+						/>
+						{calculateTrophies(rsrStats, [badge]).toLocaleString()}
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if rsrStats[badge.stat] >= tier.amount}

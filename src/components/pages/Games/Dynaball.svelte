@@ -17,7 +17,7 @@
 				calculateTrophies(dynaballStats, badges.dynaball_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div>
 		<p>Games Won: <span class="font-bold">{dynaballStats.wins.toLocaleString()}</span></p>
@@ -122,7 +122,7 @@
 		<span class="ml-1">
 			{calculateTrophies(dynaballStats, badges.dynaball).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 		{#each badges.dynaball as badge}
@@ -134,9 +134,16 @@
 					class:grayscale={dynaballStats.badges[badge.stat] === 0}
 				/>
 				<div class="flex flex-col">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-					</p>
+					<div class="flex font-semibold">
+						<p>{badge.name}</p>
+						<span class="mx-1">&bull;</span>
+						<img
+							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+							alt="Trophy icon"
+							class="h-6"
+						/>
+						{badge.trophies.toLocaleString()}
+					</div>
 					<p>Completed {dynaballStats.badges[badge.stat]} times</p>
 				</div>
 			</div>
@@ -150,7 +157,7 @@
 		<span class="ml-1">
 			{calculateTrophies(dynaballStats, badges.dynaball_tiered).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.dynaball_tiered as badge}
@@ -162,10 +169,19 @@
 					class:grayscale={dynaballStats[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(dynaballStats[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(dynaballStats[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="mx-1">&bull;</span>
+						<img
+							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+							alt="Trophy icon"
+							class="h-6"
+						/>
+						{calculateTrophies(dynaballStats, [badge]).toLocaleString()}
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if dynaballStats[badge.stat] >= tier.amount}
