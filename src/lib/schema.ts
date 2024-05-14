@@ -20,12 +20,17 @@ export type CrownLevel = {
 		obtained: number;
 		obtainable: number;
 		bonus: number;
-	}
+	};
 	style: {
 		obtained: number;
 		obtainable: number;
 		bonus: number;
-	}
+	};
+	nextEvolutionLevel: number;
+	nextLevelProgress: {
+		obtained: number;
+		obtainable: number;
+	};
 };
 
 // Collection Types
@@ -378,7 +383,6 @@ export const Games = {
 	ROCKET_SPLEEF: {
 		name: "Rocket Spleef Rush",
 		image: "rocket_spleef/icon.png"
-	
 	}
 } as const satisfies {
 	[k: string]: {
