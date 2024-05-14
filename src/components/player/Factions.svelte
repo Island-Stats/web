@@ -91,7 +91,16 @@
 
 <div class="bg-gray-500 bg-opacity-50 p-2 rounded-lg overflow-visible">
 	<div class="flex justify-between">
-		<p>Placeholder Faction List: Most of this data is made up</p>
+		<p
+			class="after:content-['*'] after:ml-0.5 after:text-neutral-400 hover:after:text-sky-500 after:transition-colors after:duration-200"
+		>
+			Placeholder Faction List
+		</p>
+		<Tooltip>
+			<p>All factions are set to level 0, prestige 0, and have 0/1000 XP.</p>
+			<p>This is due to there being no data available for factions.</p>
+			<p>Your total faction XP is correct if you have statistics enabled.</p>
+		</Tooltip>
 		{#if generalStats}
 			<p
 				class="after:ml-0.5 after:text-neutral-400 after:transition-colors after:duration-200 after:content-['*'] hover:after:text-sky-500"
@@ -104,7 +113,7 @@
 			<Tooltip placement="bottom">
 				<p>XP from quests: <span>{generalStats.quest_faction_xp.toLocaleString()}</span></p>
 				<p>XP from games <span>{generalStats.game_faction_xp.toLocaleString()}</span></p>
-				<br>
+				<br />
 				<i>This data seems to be slightly inaccurate*</i>
 			</Tooltip>
 		{:else}
