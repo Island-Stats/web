@@ -114,15 +114,16 @@
 					class:grayscale={rsrStats.badges[badge.stat] === 0}
 				/>
 				<div class="flex flex-col">
-					<div class="flex font-semibold">
+					<div class="flex font-semibold flex-col">
 						<p>{badge.name}</p>
-						<span class="mx-1">&bull;</span>
-						<img
-							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
-							alt="Trophy icon"
-							class="h-6"
-						/>
-						{badge.trophies.toLocaleString()}
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{badge.trophies.toLocaleString()}
+						</span>
 					</div>
 					<p>Completed {rsrStats.badges[badge.stat]} times</p>
 				</div>
@@ -147,18 +148,19 @@
 					class:grayscale={rsrStats[badge.stat] < badge.tiers[0].amount}
 				/>
 				<div class="flex flex-col mc-colors">
-					<div class="flex font-semibold">
+					<div class="flex font-semibold flex-col">
 						<p>
 							{badge.name}
 							{calculateBadgeTier(rsrStats[badge.stat], badge.tiers).tier.name}
 						</p>
-						<span class="mx-1">&bull;</span>
-						<img
-							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
-							alt="Trophy icon"
-							class="h-6"
-						/>
-						{calculateTrophies(rsrStats, [badge]).toLocaleString()}
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{calculateTrophies(rsrStats, [badge]).toLocaleString()}
+						</span>
 					</div>
 					<p>
 						{#each badge.tiers as tier, index}

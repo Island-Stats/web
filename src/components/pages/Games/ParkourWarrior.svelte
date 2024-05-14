@@ -140,18 +140,19 @@
 					class:grayscale={parkourWarriorStats.dojo[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<div class="flex font-semibold">
+					<div class="flex font-semibold flex-col">
 						<p>
 							{badge.name}
 							{calculateBadgeTier(parkourWarriorStats.dojo[badge.stat], badge.tiers).tier.name}
 						</p>
-						<span class="mx-1">&bull;</span>
-						<img
-							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
-							alt="Trophy icon"
-							class="h-6"
-						/>
-						{calculateTrophies(parkourWarriorStats.dojo, [badge]).toLocaleString()}
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{calculateTrophies(parkourWarriorStats.dojo, [badge]).toLocaleString()}
+						</span>
 					</div>
 					<p>
 						{#each badge.tiers as tier, index}
@@ -194,18 +195,19 @@
 					class:grayscale={parkourWarriorStats.survivor[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<div class="flex font-semibold">
+					<div class="flex font-semibold flex-col">
 						<p>
 							{badge.name}
 							{calculateBadgeTier(parkourWarriorStats.survivor[badge.stat], badge.tiers).tier.name}
 						</p>
-						<span class="mx-1">&bull;</span>
-						<img
-							src="https://cdn.islandstats.xyz/icons/trophies/red.png"
-							alt="Trophy icon"
-							class="h-6"
-						/>
-						{calculateTrophies(parkourWarriorStats.survivor, [badge]).toLocaleString()}
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{calculateTrophies(parkourWarriorStats.survivor, [badge]).toLocaleString()}
+						</span>
 					</div>
 					<p>
 						{#each badge.tiers as tier, index}
