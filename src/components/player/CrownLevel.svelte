@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getLevel, getTrophiesForLevel, getTrophiesForNextLevel } from "$lib/levels";
+	import { getLevel } from "$lib/levels";
 	import type { CrownLevel } from "$lib/schema";
 	import { Tooltip } from "flowbite-svelte";
 
@@ -14,12 +14,8 @@
 		};
 	} = {
 		level: {
-			obtained:
-				crownLevelData.skill.obtained +
-				crownLevelData.style.obtained -
-				getTrophiesForLevel(crownLevelData.level),
-			needed:
-				getTrophiesForNextLevel(crownLevelData.level) - getTrophiesForLevel(crownLevelData.level)
+			obtained: crownLevelData.nextLevelProgress.obtained,
+			needed: crownLevelData.nextLevelProgress.obtainable
 		},
 		style: {
 			obtained: crownLevelData.style.obtained,

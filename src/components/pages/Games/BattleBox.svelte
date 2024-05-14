@@ -19,7 +19,11 @@
 				calculateTrophies(battleBoxStats, badges.battle_box_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img
+			src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+			alt="Trophy icon"
+			class="h-8 ml-1"
+		/>
 	</h3>
 	<div>
 		<p>Rounds Won: <span class="font-bold">{battleBoxStats.rounds_won.toLocaleString()}</span></p>
@@ -163,7 +167,11 @@
 		Badges &bull;
 		<span class="ml-1">{calculateTrophies(battleBoxStats, badges.battle_box).toLocaleString()}</span
 		>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img
+			src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+			alt="Trophy icon"
+			class="h-8 ml-1"
+		/>
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
 		{#each badges.battle_box as badge}
@@ -175,9 +183,17 @@
 					class:grayscale={battleBoxStats.badges[badge.stat] === 0}
 				/>
 				<div class="flex flex-col">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-					</p>
+					<div class="flex font-semibold flex-col">
+						<p>{badge.name}</p>
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{badge.trophies.toLocaleString()}
+						</span>
+					</div>
 					<p>Completed {battleBoxStats.badges[badge.stat]} times</p>
 				</div>
 			</div>
@@ -191,9 +207,13 @@
 		<span class="ml-1">
 			{calculateTrophies(battleBoxStats, badges.battle_box_tiered).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img
+			src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+			alt="Trophy icon"
+			class="h-8 ml-1"
+		/>
 	</h3>
-	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+	<div class="mt-3 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
 		{#each badges.battle_box_tiered as badge}
 			<div class="group flex flex-col sm:flex-row gap-2">
 				<img
@@ -203,10 +223,20 @@
 					class:grayscale={battleBoxStats[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(battleBoxStats[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold flex-col">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(battleBoxStats[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{calculateTrophies(battleBoxStats, [badge]).toLocaleString()}
+						</span>
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if battleBoxStats[badge.stat] >= tier.amount}

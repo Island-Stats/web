@@ -5,63 +5,63 @@ export const badges = {
 			description: "Eliminate all 4 members of the opposing team",
 			icon: "battle_box/ace_in_the_box",
 			stat: "ace",
-			trophies: 25
+			trophies: 70
 		},
 		{
 			name: "Ace From Afar",
 			description: "Eliminate all 4 members of the opposing team using ranged weapons",
 			icon: "battle_box/ace_from_afar",
 			stat: "ace_from_afar",
-			trophies: 35
+			trophies: 100
 		},
 		{
 			name: "Aerial Assault",
 			description: "Eliminate a player using a ranged weapon whilst levitating",
 			icon: "battle_box/aerial_assault",
 			stat: "aerial_assault",
-			trophies: 25
+			trophies: 50
 		},
 		{
 			name: "Blind Brawl",
 			description: "Eliminate a player whilst blind",
 			icon: "battle_box/blind_brawl",
 			stat: "blind_brawl",
-			trophies: 15
+			trophies: 30
 		},
 		{
 			name: "Demolitions Expert",
 			description: "Eliminate 3 enemies with explosives in a single round",
 			icon: "battle_box/demolitions_expert",
 			stat: "demolitions_expert",
-			trophies: 35
+			trophies: 100
 		},
 		{
 			name: "Flawless Battle",
 			description: "Place 1st as a team without any member of your team dying",
 			icon: "battle_box/flawless_battle",
 			stat: "flawless_battle",
-			trophies: 25
+			trophies: 70
 		},
 		{
 			name: "Savior Ace",
 			description: "Eliminate all 4 enemies as the last player standing",
 			icon: "battle_box/savior_ace",
 			stat: "leave_it_to_me",
-			trophies: 50
+			trophies: 100
 		},
 		{
 			name: "Stealthy Takedown",
 			description: "Eliminate an enemy whilst invisible",
 			icon: "battle_box/stealthy_takedown",
 			stat: "stealthy_takedown",
-			trophies: 10
+			trophies: 30
 		},
 		{
 			name: "Ultimate Ace",
 			description: "Eliminate all 12 enemies in a game",
 			icon: "battle_box/ultimate_ace",
 			stat: "ultimate_ace",
-			trophies: 50
+			trophies: 150
 		},
 		{
 			name: "Untouchable Assassin",
@@ -69,7 +69,7 @@ export const badges = {
 				"Place 1st as a team whilst taking no damage and getting at least 4 eliminations",
 			icon: "battle_box/untouchable_assassin",
 			stat: "untouchable_assassin",
-			trophies: 35
+			trophies: 70
 		}
 	],
 	battle_box_tiered: [
@@ -80,12 +80,12 @@ export const badges = {
 			stat: "games_played",
 			tiers: [
 				{ name: "I", amount: 15, trophies: 10 },
-				{ name: "II", amount: 50, trophies: 15 },
-				{ name: "III", amount: 125, trophies: 25 },
-				{ name: "IV", amount: 250, trophies: 35 },
-				{ name: "V", amount: 475, trophies: 50 },
-				{ name: "VI", amount: 800, trophies: 70 },
-				{ name: "VII", amount: 1300, trophies: 100 }
+				{ name: "II", amount: 50, trophies: 20 },
+				{ name: "III", amount: 125, trophies: 30 },
+				{ name: "IV", amount: 250, trophies: 50 },
+				{ name: "V", amount: 475, trophies: 75 },
+				{ name: "VI", amount: 800, trophies: 100 },
+				{ name: "VII", amount: 1300, trophies: 125 }
 			]
 		},
 		{
@@ -95,12 +95,12 @@ export const badges = {
 			stat: "kills",
 			tiers: [
 				{ name: "I", amount: 25, trophies: 10 },
-				{ name: "II", amount: 75, trophies: 15 },
-				{ name: "III", amount: 175, trophies: 25 },
-				{ name: "IV", amount: 400, trophies: 35 },
-				{ name: "V", amount: 700, trophies: 50 },
-				{ name: "VI", amount: 1200, trophies: 70 },
-				{ name: "VII", amount: 2000, trophies: 100 }
+				{ name: "II", amount: 75, trophies: 20 },
+				{ name: "III", amount: 175, trophies: 30 },
+				{ name: "IV", amount: 400, trophies: 50 },
+				{ name: "V", amount: 700, trophies: 75 },
+				{ name: "VI", amount: 1200, trophies: 100 },
+				{ name: "VII", amount: 2000, trophies: 125 }
 			]
 		},
 		{
@@ -110,12 +110,12 @@ export const badges = {
 			stat: "team_first_place",
 			tiers: [
 				{ name: "I", amount: 5, trophies: 10 },
-				{ name: "II", amount: 15, trophies: 15 },
-				{ name: "III", amount: 35, trophies: 25 },
-				{ name: "IV", amount: 75, trophies: 35 },
-				{ name: "V", amount: 155, trophies: 50 },
-				{ name: "VI", amount: 250, trophies: 70 },
-				{ name: "VII", amount: 400, trophies: 100 }
+				{ name: "II", amount: 15, trophies: 20 },
+				{ name: "III", amount: 35, trophies: 30 },
+				{ name: "IV", amount: 75, trophies: 50 },
+				{ name: "V", amount: 155, trophies: 75 },
+				{ name: "VI", amount: 250, trophies: 100 },
+				{ name: "VII", amount: 400, trophies: 125 }
 			]
 		},
 		{
@@ -125,12 +125,12 @@ export const badges = {
 			stat: "rounds_won",
 			tiers: [
 				{ name: "I", amount: 25, trophies: 10 },
-				{ name: "II", amount: 75, trophies: 15 },
-				{ name: "III", amount: 175, trophies: 25 },
-				{ name: "IV", amount: 375, trophies: 35 },
-				{ name: "V", amount: 600, trophies: 50 },
-				{ name: "VI", amount: 1200, trophies: 70 },
-				{ name: "VII", amount: 2000, trophies: 100 }
+				{ name: "II", amount: 75, trophies: 20 },
+				{ name: "III", amount: 175, trophies: 30 },
+				{ name: "IV", amount: 375, trophies: 50 },
+				{ name: "V", amount: 600, trophies: 75 },
+				{ name: "VI", amount: 1200, trophies: 100 },
+				{ name: "VII", amount: 2000, trophies: 125 }
 			]
 		}
 	],
@@ -200,12 +200,12 @@ export const badges = {
 			stat: "survived_minute",
 			tiers: [
 				{ name: "I", amount: 30, trophies: 10 },
-				{ name: "II", amount: 90, trophies: 15 },
-				{ name: "III", amount: 200, trophies: 25 },
-				{ name: "IV", amount: 450, trophies: 35 },
-				{ name: "V", amount: 800, trophies: 50 },
-				{ name: "VI", amount: 1400, trophies: 70 },
-				{ name: "VII", amount: 2300, trophies: 100 }
+				{ name: "II", amount: 90, trophies: 20 },
+				{ name: "III", amount: 200, trophies: 30 },
+				{ name: "IV", amount: 450, trophies: 50 },
+				{ name: "V", amount: 800, trophies: 75 },
+				{ name: "VI", amount: 1400, trophies: 100 },
+				{ name: "VII", amount: 2300, trophies: 125 }
 			]
 		},
 		{
@@ -215,12 +215,12 @@ export const badges = {
 			stat: "kills",
 			tiers: [
 				{ name: "I", amount: 25, trophies: 10 },
-				{ name: "II", amount: 75, trophies: 15 },
-				{ name: "III", amount: 150, trophies: 25 },
-				{ name: "IV", amount: 350, trophies: 35 },
-				{ name: "V", amount: 600, trophies: 50 },
-				{ name: "VI", amount: 1000, trophies: 70 },
-				{ name: "VII", amount: 1700, trophies: 100 }
+				{ name: "II", amount: 75, trophies: 20 },
+				{ name: "III", amount: 150, trophies: 30 },
+				{ name: "IV", amount: 350, trophies: 50 },
+				{ name: "V", amount: 600, trophies: 75 },
+				{ name: "VI", amount: 1000, trophies: 100 },
+				{ name: "VII", amount: 1700, trophies: 125 }
 			]
 		},
 		{
@@ -230,12 +230,12 @@ export const badges = {
 			stat: "survival_first_place",
 			tiers: [
 				{ name: "I", amount: 2, trophies: 10 },
-				{ name: "II", amount: 5, trophies: 15 },
-				{ name: "III", amount: 15, trophies: 25 },
-				{ name: "IV", amount: 25, trophies: 35 },
-				{ name: "V", amount: 50, trophies: 50 },
-				{ name: "VI", amount: 100, trophies: 70 },
-				{ name: "VII", amount: 150, trophies: 100 }
+				{ name: "II", amount: 5, trophies: 20 },
+				{ name: "III", amount: 15, trophies: 30 },
+				{ name: "IV", amount: 25, trophies: 50 },
+				{ name: "V", amount: 50, trophies: 75 },
+				{ name: "VI", amount: 100, trophies: 100 },
+				{ name: "VII", amount: 150, trophies: 125 }
 			]
 		},
 		{
@@ -245,12 +245,12 @@ export const badges = {
 			stat: "survival_top_eight",
 			tiers: [
 				{ name: "I", amount: 20, trophies: 10 },
-				{ name: "II", amount: 65, trophies: 15 },
-				{ name: "III", amount: 150, trophies: 25 },
-				{ name: "IV", amount: 325, trophies: 35 },
-				{ name: "V", amount: 575, trophies: 50 },
-				{ name: "VI", amount: 1000, trophies: 70 },
-				{ name: "VII", amount: 1600, trophies: 100 }
+				{ name: "II", amount: 65, trophies: 20 },
+				{ name: "III", amount: 150, trophies: 30 },
+				{ name: "IV", amount: 325, trophies: 50 },
+				{ name: "V", amount: 575, trophies: 75 },
+				{ name: "VI", amount: 1000, trophies: 100 },
+				{ name: "VII", amount: 1600, trophies: 125 }
 			]
 		}
 	],
@@ -260,21 +260,21 @@ export const badges = {
 			description: "Place 1st with the Early Birds modifier active",
 			icon: "tgttos/got_the_worm",
 			stat: "got_the_worm",
-			trophies: 15
+			trophies: 30
 		},
 		{
 			name: "Jackpot",
 			description: "Place 7th in every round of a TGTTOS game",
 			icon: "tgttos/jackpot",
 			stat: "jackpot",
-			trophies: 15
+			trophies: 50
 		},
 		{
 			name: "Pave the Way",
 			description: "Place 1st without placing blocks on a map where you can place blocks",
 			icon: "tgttos/pave_the_way",
 			stat: "pave_the_way",
-			trophies: 25
+			trophies: 50
 		},
 		{
 			name: "Slapdown",
@@ -288,28 +288,28 @@ export const badges = {
 			description: "Place 1st in every round of TGTTOS game",
 			icon: "tgttos/triple_champion",
 			stat: "triple_champion",
-			trophies: 35
+			trophies: 100
 		},
 		{
 			name: "Ultimate Comeback",
 			description: "Place 1st after getting knocked into the void",
 			icon: "tgttos/ultimate_comeback",
 			stat: "ultimate_comeback",
-			trophies: 35
+			trophies: 70
 		},
 		{
 			name: "Untouchable Speedster",
 			description: "Place 1st without being hit with the Double Time modifier is active",
 			icon: "tgttos/untouchable_speedster",
 			stat: "untouchable_speedster",
-			trophies: 50
+			trophies: 100
 		},
 		{
 			name: "Victorious Pacifist",
 			description: "Place 1st without punching anyone",
 			icon: "tgttos/victorious_pacifist",
 			stat: "victorious_pacifist",
-			trophies: 25
+			trophies: 50
 		}
 	],
 	tgttos_tiered: [
@@ -320,12 +320,12 @@ export const badges = {
 			stat: "chickens_punched",
 			tiers: [
 				{ name: "I", amount: 50, trophies: 10 },
-				{ name: "II", amount: 150, trophies: 15 },
-				{ name: "III", amount: 320, trophies: 25 },
-				{ name: "IV", amount: 700, trophies: 35 },
-				{ name: "V", amount: 1300, trophies: 50 },
-				{ name: "VI", amount: 2250, trophies: 70 },
-				{ name: "VII", amount: 3750, trophies: 100 }
+				{ name: "II", amount: 150, trophies: 20 },
+				{ name: "III", amount: 320, trophies: 30 },
+				{ name: "IV", amount: 700, trophies: 50 },
+				{ name: "V", amount: 1300, trophies: 75 },
+				{ name: "VI", amount: 2250, trophies: 100 },
+				{ name: "VII", amount: 3750, trophies: 125 }
 			]
 		},
 		{
@@ -335,12 +335,12 @@ export const badges = {
 			stat: "round_first_place",
 			tiers: [
 				{ name: "I", amount: 2, trophies: 10 },
-				{ name: "II", amount: 7, trophies: 15 },
-				{ name: "III", amount: 15, trophies: 25 },
-				{ name: "IV", amount: 35, trophies: 35 },
-				{ name: "V", amount: 60, trophies: 50 },
-				{ name: "VI", amount: 110, trophies: 70 },
-				{ name: "VII", amount: 180, trophies: 100 }
+				{ name: "II", amount: 7, trophies: 20 },
+				{ name: "III", amount: 15, trophies: 30 },
+				{ name: "IV", amount: 35, trophies: 50 },
+				{ name: "V", amount: 60, trophies: 75 },
+				{ name: "VI", amount: 110, trophies: 100 },
+				{ name: "VII", amount: 180, trophies: 125 }
 			]
 		},
 		{
@@ -350,12 +350,12 @@ export const badges = {
 			stat: "round_top_five",
 			tiers: [
 				{ name: "I", amount: 15, trophies: 10 },
-				{ name: "II", amount: 50, trophies: 15 },
-				{ name: "III", amount: 110, trophies: 25 },
-				{ name: "IV", amount: 250, trophies: 35 },
-				{ name: "V", amount: 425, trophies: 50 },
-				{ name: "VI", amount: 750, trophies: 70 },
-				{ name: "VII", amount: 1250, trophies: 100 }
+				{ name: "II", amount: 50, trophies: 20 },
+				{ name: "III", amount: 110, trophies: 30 },
+				{ name: "IV", amount: 250, trophies: 50 },
+				{ name: "V", amount: 425, trophies: 75 },
+				{ name: "VI", amount: 750, trophies: 100 },
+				{ name: "VII", amount: 1250, trophies: 125 }
 			]
 		},
 		{
@@ -365,12 +365,12 @@ export const badges = {
 			stat: "first_place",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
-				{ name: "II", amount: 2, trophies: 15 },
-				{ name: "III", amount: 5, trophies: 25 },
-				{ name: "IV", amount: 10, trophies: 35 },
-				{ name: "V", amount: 20, trophies: 50 },
-				{ name: "VI", amount: 40, trophies: 70 },
-				{ name: "VII", amount: 60, trophies: 100 }
+				{ name: "II", amount: 2, trophies: 20 },
+				{ name: "III", amount: 5, trophies: 30 },
+				{ name: "IV", amount: 10, trophies: 50 },
+				{ name: "V", amount: 20, trophies: 75 },
+				{ name: "VI", amount: 40, trophies: 100 },
+				{ name: "VII", amount: 60, trophies: 125 }
 			]
 		},
 		{
@@ -380,12 +380,12 @@ export const badges = {
 			stat: "top_five",
 			tiers: [
 				{ name: "I", amount: 5, trophies: 10 },
-				{ name: "II", amount: 15, trophies: 15 },
-				{ name: "III", amount: 35, trophies: 25 },
-				{ name: "IV", amount: 75, trophies: 35 },
-				{ name: "V", amount: 125, trophies: 50 },
-				{ name: "VI", amount: 225, trophies: 70 },
-				{ name: "VII", amount: 375, trophies: 100 }
+				{ name: "II", amount: 15, trophies: 20 },
+				{ name: "III", amount: 35, trophies: 30 },
+				{ name: "IV", amount: 75, trophies: 50 },
+				{ name: "V", amount: 125, trophies: 75 },
+				{ name: "VI", amount: 225, trophies: 100 },
+				{ name: "VII", amount: 375, trophies: 125 }
 			]
 		}
 	],
@@ -402,35 +402,35 @@ export const badges = {
 			description: "Survive being hit by the matrix trap",
 			icon: "hitw/bullet_time",
 			stat: "bullet_time",
-			trophies: 10
+			trophies: 30
 		},
 		{
 			name: "Something in the Waves",
 			description: "Catch a fish during a game of HITW",
 			icon: "hitw/something_in_the_waves",
 			stat: "fish_catcher",
-			trophies: 10
+			trophies: 70
 		},
 		{
 			name: "Barely Broiled",
 			description: "Survive being launched by a hot potato",
 			icon: "hitw/barely_broiled",
 			stat: "hot_potato_survivor",
-			trophies: 15
+			trophies: 50
 		},
 		{
 			name: "Monster Catch",
 			description: "Hook a guardian with a fishing rod",
 			icon: "hitw/monster_catch",
 			stat: "monster_catcher",
-			trophies: 35
+			trophies: 100
 		},
 		{
 			name: "Slimey Rivalry",
 			description: "Survival all 4 minutes of a game of HITW",
 			icon: "hitw/slimey_rivalry",
 			stat: "slimey_rivalry",
-			trophies: 25
+			trophies: 70
 		}
 	],
 	hitw_tiered: [
@@ -441,12 +441,12 @@ export const badges = {
 			stat: "first_place",
 			tiers: [
 				{ name: "I", amount: 2, trophies: 10 },
-				{ name: "II", amount: 5, trophies: 15 },
-				{ name: "III", amount: 10, trophies: 25 },
-				{ name: "IV", amount: 25, trophies: 35 },
-				{ name: "V", amount: 40, trophies: 50 },
-				{ name: "VI", amount: 70, trophies: 70 },
-				{ name: "VII", amount: 125, trophies: 100 }
+				{ name: "II", amount: 5, trophies: 20 },
+				{ name: "III", amount: 10, trophies: 30 },
+				{ name: "IV", amount: 25, trophies: 50 },
+				{ name: "V", amount: 40, trophies: 75 },
+				{ name: "VI", amount: 70, trophies: 100 },
+				{ name: "VII", amount: 125, trophies: 125 }
 			]
 		},
 		{
@@ -456,12 +456,12 @@ export const badges = {
 			stat: "top_five",
 			tiers: [
 				{ name: "I", amount: 10, trophies: 10 },
-				{ name: "II", amount: 25, trophies: 15 },
-				{ name: "III", amount: 75, trophies: 25 },
-				{ name: "IV", amount: 125, trophies: 35 },
-				{ name: "V", amount: 250, trophies: 50 },
-				{ name: "VI", amount: 425, trophies: 70 },
-				{ name: "VII", amount: 700, trophies: 100 }
+				{ name: "II", amount: 25, trophies: 20 },
+				{ name: "III", amount: 75, trophies: 30 },
+				{ name: "IV", amount: 125, trophies: 50 },
+				{ name: "V", amount: 250, trophies: 75 },
+				{ name: "VI", amount: 425, trophies: 100 },
+				{ name: "VII", amount: 700, trophies: 125 }
 			]
 		},
 		{
@@ -471,12 +471,12 @@ export const badges = {
 			stat: "walls_dodged",
 			tiers: [
 				{ name: "I", amount: 350, trophies: 10 },
-				{ name: "II", amount: 1100, trophies: 15 },
-				{ name: "III", amount: 2500, trophies: 25 },
-				{ name: "IV", amount: 5500, trophies: 35 },
-				{ name: "V", amount: 10000, trophies: 50 },
-				{ name: "VI", amount: 15000, trophies: 70 },
-				{ name: "VII", amount: 30000, trophies: 100 }
+				{ name: "II", amount: 1100, trophies: 20 },
+				{ name: "III", amount: 2500, trophies: 30 },
+				{ name: "IV", amount: 5500, trophies: 50 },
+				{ name: "V", amount: 10000, trophies: 75 },
+				{ name: "VI", amount: 15000, trophies: 100 },
+				{ name: "VII", amount: 30000, trophies: 125 }
 			]
 		}
 	],
@@ -486,49 +486,49 @@ export const badges = {
 			description: "Eliminate 2 players within 15 seconds of using an airstrike",
 			icon: "dynaball/airstrike_assassin",
 			stat: "airstrike_eliminate_2",
-			trophies: 35
+			trophies: 70
 		},
 		{
 			name: "Dynaballin",
 			description: "Eliminate 3 players within 10 seconds",
 			icon: "dynaball/dynaballin",
 			stat: "fast_triple_kill",
-			trophies: 50
+			trophies: 100
 		},
 		{
 			name: "Dynamite Dreadlord",
 			description: "Eliminate 5 players within a single game",
 			icon: "dynaball/dynasniper",
 			stat: "eliminate_5",
-			trophies: 25
+			trophies: 100
 		},
 		{
 			name: "Final Survivor",
 			description: "Win a game whilst being the only remaining player of your team",
 			icon: "dynaball/final_survivor",
 			stat: "only_survivor",
-			trophies: 15
+			trophies: 70
 		},
 		{
 			name: "Massive Repairs",
 			description: "Place 200 repair blocks in a single game",
 			icon: "dynaball/massive_repairs",
 			stat: "repair_200",
-			trophies: 15
+			trophies: 30
 		},
 		{
 			name: "Tactical Powder",
 			description: "Turn an enemy crate into powder with a powder bomb",
 			icon: "dynaball/tactical_powder",
 			stat: "powder_bomb_crate",
-			trophies: 25
+			trophies: 30
 		},
 		{
 			name: "Ultimate Baller",
 			description: "Win a game as the only remaining player against at least 3 enemies",
 			icon: "dynaball/ultimate_baller",
 			stat: "only_survivor_against_3",
-			trophies: 35
+			trophies: 70
 		}
 	],
 	dynaball_tiered: [
@@ -539,12 +539,12 @@ export const badges = {
 			stat: "wins",
 			tiers: [
 				{ name: "I", amount: 3, trophies: 10 },
-				{ name: "II", amount: 7, trophies: 15 },
-				{ name: "III", amount: 15, trophies: 25 },
-				{ name: "IV", amount: 30, trophies: 35 },
-				{ name: "V", amount: 60, trophies: 50 },
-				{ name: "VI", amount: 100, trophies: 70 },
-				{ name: "VII", amount: 175, trophies: 100 }
+				{ name: "II", amount: 7, trophies: 20 },
+				{ name: "III", amount: 15, trophies: 30 },
+				{ name: "IV", amount: 30, trophies: 50 },
+				{ name: "V", amount: 60, trophies: 75 },
+				{ name: "VI", amount: 100, trophies: 100 },
+				{ name: "VII", amount: 175, trophies: 125 }
 			]
 		},
 		{
@@ -554,12 +554,12 @@ export const badges = {
 			stat: "blocks_destroyed",
 			tiers: [
 				{ name: "I", amount: 2000, trophies: 10 },
-				{ name: "II", amount: 6000, trophies: 15 },
-				{ name: "III", amount: 15000, trophies: 25 },
-				{ name: "IV", amount: 30000, trophies: 35 },
-				{ name: "V", amount: 60000, trophies: 50 },
-				{ name: "VI", amount: 100000, trophies: 70 },
-				{ name: "VII", amount: 150000, trophies: 100 }
+				{ name: "II", amount: 6000, trophies: 20 },
+				{ name: "III", amount: 15000, trophies: 30 },
+				{ name: "IV", amount: 30000, trophies: 50 },
+				{ name: "V", amount: 60000, trophies: 75 },
+				{ name: "VI", amount: 100000, trophies: 100 },
+				{ name: "VII", amount: 150000, trophies: 125 }
 			]
 		},
 		{
@@ -569,12 +569,12 @@ export const badges = {
 			stat: "players_eliminated",
 			tiers: [
 				{ name: "I", amount: 10, trophies: 10 },
-				{ name: "II", amount: 30, trophies: 15 },
-				{ name: "III", amount: 75, trophies: 25 },
-				{ name: "IV", amount: 150, trophies: 35 },
-				{ name: "V", amount: 275, trophies: 50 },
-				{ name: "VI", amount: 450, trophies: 70 },
-				{ name: "VII", amount: 800, trophies: 100 }
+				{ name: "II", amount: 30, trophies: 20 },
+				{ name: "III", amount: 75, trophies: 30 },
+				{ name: "IV", amount: 150, trophies: 50 },
+				{ name: "V", amount: 275, trophies: 75 },
+				{ name: "VI", amount: 450, trophies: 100 },
+				{ name: "VII", amount: 800, trophies: 125 }
 			]
 		},
 		{
@@ -584,12 +584,12 @@ export const badges = {
 			stat: "blocks_placed",
 			tiers: [
 				{ name: "I", amount: 1000, trophies: 10 },
-				{ name: "II", amount: 3000, trophies: 15 },
-				{ name: "III", amount: 7000, trophies: 25 },
-				{ name: "IV", amount: 15000, trophies: 35 },
-				{ name: "V", amount: 25000, trophies: 50 },
-				{ name: "VI", amount: 45000, trophies: 70 },
-				{ name: "VII", amount: 80000, trophies: 100 }
+				{ name: "II", amount: 3000, trophies: 20 },
+				{ name: "III", amount: 7000, trophies: 30 },
+				{ name: "IV", amount: 15000, trophies: 50 },
+				{ name: "V", amount: 25000, trophies: 75 },
+				{ name: "VI", amount: 45000, trophies: 100 },
+				{ name: "VII", amount: 80000, trophies: 125 }
 			]
 		},
 		{
@@ -599,12 +599,12 @@ export const badges = {
 			stat: "spawners_destroyed",
 			tiers: [
 				{ name: "I", amount: 10, trophies: 10 },
-				{ name: "II", amount: 30, trophies: 15 },
-				{ name: "III", amount: 75, trophies: 25 },
-				{ name: "IV", amount: 150, trophies: 35 },
-				{ name: "V", amount: 275, trophies: 50 },
-				{ name: "VI", amount: 450, trophies: 70 },
-				{ name: "VII", amount: 800, trophies: 100 }
+				{ name: "II", amount: 30, trophies: 20 },
+				{ name: "III", amount: 75, trophies: 30 },
+				{ name: "IV", amount: 150, trophies: 50 },
+				{ name: "V", amount: 275, trophies: 75 },
+				{ name: "VI", amount: 450, trophies: 100 },
+				{ name: "VII", amount: 800, trophies: 125 }
 			]
 		},
 		{
@@ -614,12 +614,12 @@ export const badges = {
 			stat: "survived_two_minute",
 			tiers: [
 				{ name: "I", amount: 15, trophies: 10 },
-				{ name: "II", amount: 50, trophies: 15 },
-				{ name: "III", amount: 100, trophies: 25 },
-				{ name: "IV", amount: 200, trophies: 35 },
-				{ name: "V", amount: 375, trophies: 50 },
-				{ name: "VI", amount: 600, trophies: 70 },
-				{ name: "VII", amount: 1100, trophies: 100 }
+				{ name: "II", amount: 50, trophies: 20 },
+				{ name: "III", amount: 100, trophies: 30 },
+				{ name: "IV", amount: 200, trophies: 50 },
+				{ name: "V", amount: 375, trophies: 75 },
+				{ name: "VI", amount: 600, trophies: 100 },
+				{ name: "VII", amount: 1100, trophies: 125 }
 			]
 		}
 	],
@@ -631,12 +631,12 @@ export const badges = {
 			stat: "unique_rot_standard_cmpl",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
-				{ name: "II", amount: 2, trophies: 15 },
-				{ name: "III", amount: 3, trophies: 25 },
-				{ name: "IV", amount: 5, trophies: 35 },
-				{ name: "V", amount: 7, trophies: 50 },
-				{ name: "VI", amount: 10, trophies: 70 },
-				{ name: "VII", amount: 15, trophies: 100 }
+				{ name: "II", amount: 2, trophies: 20 },
+				{ name: "III", amount: 3, trophies: 30 },
+				{ name: "IV", amount: 5, trophies: 50 },
+				{ name: "V", amount: 7, trophies: 75 },
+				{ name: "VI", amount: 10, trophies: 100 },
+				{ name: "VII", amount: 15, trophies: 125 }
 			]
 		},
 		{
@@ -646,12 +646,12 @@ export const badges = {
 			stat: "unique_rot_advanced_cmpl",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
-				{ name: "II", amount: 2, trophies: 15 },
-				{ name: "III", amount: 3, trophies: 25 },
-				{ name: "IV", amount: 5, trophies: 35 },
-				{ name: "V", amount: 7, trophies: 50 },
-				{ name: "VI", amount: 10, trophies: 70 },
-				{ name: "VII", amount: 15, trophies: 100 }
+				{ name: "II", amount: 2, trophies: 20 },
+				{ name: "III", amount: 3, trophies: 30 },
+				{ name: "IV", amount: 5, trophies: 50 },
+				{ name: "V", amount: 7, trophies: 75 },
+				{ name: "VI", amount: 10, trophies: 100 },
+				{ name: "VII", amount: 15, trophies: 125 }
 			]
 		},
 		{
@@ -661,12 +661,12 @@ export const badges = {
 			stat: "unique_rot_expert_cmpl",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
-				{ name: "II", amount: 2, trophies: 15 },
-				{ name: "III", amount: 3, trophies: 25 },
-				{ name: "IV", amount: 5, trophies: 35 },
-				{ name: "V", amount: 7, trophies: 50 },
-				{ name: "VI", amount: 10, trophies: 70 },
-				{ name: "VII", amount: 15, trophies: 100 }
+				{ name: "II", amount: 2, trophies: 20 },
+				{ name: "III", amount: 3, trophies: 30 },
+				{ name: "IV", amount: 5, trophies: 50 },
+				{ name: "V", amount: 7, trophies: 75 },
+				{ name: "VI", amount: 10, trophies: 100 },
+				{ name: "VII", amount: 15, trophies: 125 }
 			]
 		},
 		{
@@ -676,12 +676,12 @@ export const badges = {
 			stat: "unique_standard_cmpl",
 			tiers: [
 				{ name: "I", amount: 7, trophies: 10 },
-				{ name: "II", amount: 15, trophies: 15 },
-				{ name: "III", amount: 25, trophies: 25 },
-				{ name: "IV", amount: 45, trophies: 35 },
-				{ name: "V", amount: 75, trophies: 50 },
-				{ name: "VI", amount: 125, trophies: 70 },
-				{ name: "VII", amount: 200, trophies: 100 }
+				{ name: "II", amount: 15, trophies: 20 },
+				{ name: "III", amount: 25, trophies: 30 },
+				{ name: "IV", amount: 45, trophies: 50 },
+				{ name: "V", amount: 75, trophies: 75 },
+				{ name: "VI", amount: 125, trophies: 100 },
+				{ name: "VII", amount: 200, trophies: 125 }
 			]
 		},
 		{
@@ -691,12 +691,12 @@ export const badges = {
 			stat: "unique_advanced_cmpl",
 			tiers: [
 				{ name: "I", amount: 7, trophies: 10 },
-				{ name: "II", amount: 15, trophies: 15 },
-				{ name: "III", amount: 25, trophies: 25 },
-				{ name: "IV", amount: 45, trophies: 35 },
-				{ name: "V", amount: 75, trophies: 50 },
-				{ name: "VI", amount: 125, trophies: 70 },
-				{ name: "VII", amount: 200, trophies: 100 }
+				{ name: "II", amount: 15, trophies: 20 },
+				{ name: "III", amount: 25, trophies: 30 },
+				{ name: "IV", amount: 45, trophies: 50 },
+				{ name: "V", amount: 75, trophies: 75 },
+				{ name: "VI", amount: 125, trophies: 100 },
+				{ name: "VII", amount: 200, trophies: 125 }
 			]
 		},
 		{
@@ -706,12 +706,12 @@ export const badges = {
 			stat: "unique_expert_cmpl",
 			tiers: [
 				{ name: "I", amount: 7, trophies: 10 },
-				{ name: "II", amount: 15, trophies: 15 },
-				{ name: "III", amount: 25, trophies: 25 },
-				{ name: "IV", amount: 45, trophies: 35 },
-				{ name: "V", amount: 75, trophies: 50 },
-				{ name: "VI", amount: 125, trophies: 70 },
-				{ name: "VII", amount: 200, trophies: 100 }
+				{ name: "II", amount: 15, trophies: 20 },
+				{ name: "III", amount: 25, trophies: 30 },
+				{ name: "IV", amount: 45, trophies: 50 },
+				{ name: "V", amount: 75, trophies: 75 },
+				{ name: "VI", amount: 125, trophies: 100 },
+				{ name: "VII", amount: 200, trophies: 125 },
 			]
 		}
 	],
@@ -723,12 +723,12 @@ export const badges = {
 			stat: "final_duel_wins",
 			tiers: [
 				{ name: "I", amount: 1, trophies: 10 },
-				{ name: "II", amount: 3, trophies: 15 },
-				{ name: "III", amount: 5, trophies: 25 },
-				{ name: "IV", amount: 15, trophies: 35 },
-				{ name: "V", amount: 25, trophies: 50 },
-				{ name: "VI", amount: 45, trophies: 70 },
-				{ name: "VII", amount: 75, trophies: 100 }
+				{ name: "II", amount: 3, trophies: 20 },
+				{ name: "III", amount: 5, trophies: 30 },
+				{ name: "IV", amount: 15, trophies: 50 },
+				{ name: "V", amount: 25, trophies: 75 },
+				{ name: "VI", amount: 45, trophies: 100 },
+				{ name: "VII", amount: 75, trophies: 125 }
 			]
 		},
 		{
@@ -738,12 +738,12 @@ export const badges = {
 			stat: "leap_6_completion",
 			tiers: [
 				{ name: "I", amount: 10, trophies: 10 },
-				{ name: "II", amount: 25, trophies: 15 },
-				{ name: "III", amount: 6, trophies: 25 },
-				{ name: "IV", amount: 120, trophies: 35 },
-				{ name: "V", amount: 225, trophies: 50 },
-				{ name: "VI", amount: 375, trophies: 70 },
-				{ name: "VII", amount: 625, trophies: 100 }
+				{ name: "II", amount: 25, trophies: 20 },
+				{ name: "III", amount: 6, trophies: 30 },
+				{ name: "IV", amount: 120, trophies: 50 },
+				{ name: "V", amount: 225, trophies: 75 },
+				{ name: "VI", amount: 375, trophies: 100 },
+				{ name: "VII", amount: 625, trophies: 125 }
 			]
 		},
 		{
@@ -753,12 +753,12 @@ export const badges = {
 			stat: "players_eliminated",
 			tiers: [
 				{ name: "I", amount: 100, trophies: 10 },
-				{ name: "II", amount: 350, trophies: 15 },
-				{ name: "III", amount: 800, trophies: 25 },
-				{ name: "IV", amount: 1750, trophies: 35 },
-				{ name: "V", amount: 3000, trophies: 50 },
-				{ name: "VI", amount: 5000, trophies: 70 },
-				{ name: "VII", amount: 8000, trophies: 100 }
+				{ name: "II", amount: 350, trophies: 20 },
+				{ name: "III", amount: 800, trophies: 30 },
+				{ name: "IV", amount: 1750, trophies: 50 },
+				{ name: "V", amount: 3000, trophies: 75 },
+				{ name: "VI", amount: 5000, trophies: 100 },
+				{ name: "VII", amount: 8000, trophies: 125 }
 			]
 		}
 	],

@@ -1,14 +1,16 @@
 <script lang="ts">
 	import type { ActionResult } from "@sveltejs/kit";
-	import NavSearch from "../../components/core/NavSearch.svelte";
-	import Leaderboard from "../../components/pages/Leaderboard.svelte";
+	import { Tooltip } from "flowbite-svelte";
+	import { badges, type Badge } from "$lib/badges";
+	import { Games } from "$lib/schema";
 	import type { ActionData } from "./$types";
 	import { applyAction, deserialize } from "$app/forms";
-	import { badges, type Badge } from "$lib/badges";
+	import Leaderboard from "../../components/pages/Leaderboard.svelte";
 	import Nav from "../../components/core/Nav.svelte";
+	import NavSearch from "../../components/core/NavSearch.svelte";
 
 	const statOptions = {
-		general: [
+		GENERAL: [
 			{
 				stat: "$statistics.general.games_played",
 				name: "Games Played"
@@ -30,7 +32,7 @@
 				name: "Game Faction XP"
 			}
 		],
-		battle_box: [
+		BATTLE_BOX: [
 			{
 				stat: "$statistics.battle_box.games_played",
 				name: "Games Played"
@@ -44,15 +46,11 @@
 				name: "Rounds Won"
 			},
 			{
-				stat: "$statistics.battle_box.badges.ace",
-				name: "Aces"
-			},
-			{
 				stat: "$statistics.battle_box.kills",
 				name: "Kills"
 			}
 		],
-		dynaball: [
+		DYNABALL: [
 			{
 				stat: "$statistics.dynaball.games_played",
 				name: "Games Played"
@@ -74,7 +72,7 @@
 				name: "Kills"
 			}
 		],
-		hitw: [
+		HOLE_IN_THE_WALL: [
 			{
 				stat: "$statistics.hitw.games_played",
 				name: "Games Played"
@@ -82,10 +80,6 @@
 			{
 				stat: "$statistics.hitw.first_place",
 				name: "Wins"
-			},
-			{
-				stat: "$statistics.hitw.badges.slimey_rivalry",
-				name: "Games Tied"
 			},
 			{
 				stat: "$statistics.hitw.players_outlived",
@@ -96,7 +90,7 @@
 				name: "Walls Dodged"
 			}
 		],
-		sky_battle: [
+		SKY_BATTLE: [
 			{
 				stat: "$statistics.sky_battle.quads.games_played",
 				name: "Games Played"
@@ -118,7 +112,7 @@
 				name: "Kills"
 			}
 		],
-		tgttos: [
+		TGTTOS: [
 			{
 				stat: "$statistics.tgttos.games_played",
 				name: "Games Played"
@@ -140,7 +134,7 @@
 				name: "Kills"
 			}
 		],
-		pkw: [
+		PARKOUR_WARRIOR: [
 			{
 				stat: "$statistics.pkw.dojo.medals_banked",
 				name: "Unique Medals Banked"
@@ -181,44 +175,72 @@
 				stat: "$statistics.general.community_contribution",
 				name: "PKW Community Contribution"
 			}
+		],
+		ROCKET_SPLEEF: [
+			{
+				stat: "$statistics.rsr.games_played",
+				name: "Games Played"
+			},
+			{
+				stat: "$statistics.rsr.first_place",
+				name: "Wins"
+			},
+			{
+				stat: "$statistics.rsr.badges.melee_kills",
+				name: "Melee Kills"
+			},
+			{
+				stat: "$statistics.rsr.kills",
+				name: "Kills"
+			}
 		]
 	} as const satisfies {
 		[key: string]: { stat: string; name: string }[];
 	};
 
 	const badgeOptions = {
-		battle_box: badges.battle_box.map((badge) => ({
+		BATTLE_BOX: badges.battle_box.map((badge) => ({
 			...badge,
 			stat: `$statistics.battle_box.badges.${badge.stat}`
 		})),
-		dynaball: badges.dynaball.map((badge) => ({
+		DYNABALL: badges.dynaball.map((badge) => ({
 			...badge,
 			stat: `$statistics.dynaball.badges.${badge.stat}`
 		})),
-		hitw: badges.hitw.map((badge) => ({ ...badge, stat: `$statistics.hitw.badges.${badge.stat}` })),
-		sky_battle: badges.sky_battle.map((badge) => ({
+		HOLE_IN_THE_WALL: badges.hitw.map((badge) => ({
+			...badge,
+			stat: `$statistics.hitw.badges.${badge.stat}`
+		})),
+		SKY_BATTLE: badges.sky_battle.map((badge) => ({
 			...badge,
 			stat: `$statistics.sky_battle.quads.badges.${badge.stat}`
 		})),
-		tgttos: badges.tgttos.map((badge) => ({
+		TGTTOS: badges.tgttos.map((badge) => ({
 			...badge,
 			stat: `$statistics.tgttos.badges.${badge.stat}`
+		})),
+		ROCKET_SPLEEF: badges.rocket_spleef.map((badge) => ({
+			...badge,
+			stat: `$statistics.rsr.badges.${badge.stat}`
 		}))
+	} as const satisfies {
+		[key: string]: Badge[];
 	};
 
-	type GameName = keyof typeof statOptions;
-
-	let game: GameName;
-	let stat: { stat: string; name: string } | Badge;
+	const gameOptions = [
+		"GENERAL",
+		"BATTLE_BOX",
+		"DYNABALL",
+		"HOLE_IN_THE_WALL",
+		"SKY_BATTLE",
+		"TGTTOS",
+		"PARKOUR_WARRIOR",
+		"ROCKET_SPLEEF"
+	] as const;
 
 	export let form: ActionData;
 
-	if (form) {
-		game = form.game as GameName;
-		stat = statOptions[form.game as GameName].find((option) => option.stat === form!.stat)!;
-	} else {
-		game = "general";
-	}
+	let option: { stat: string; name: string } | Badge;
 
 	async function handleFormSubmit() {
 		const res = await fetch(`/leaderboards`, {
@@ -226,7 +248,7 @@
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded"
 			},
-			body: `game=${game}&stat=${stat!.stat}`
+			body: `&stat=${option!.stat}`
 		});
 
 		const result: ActionResult = deserialize(await res.text());
@@ -235,141 +257,95 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Leaderboards | Island Stats</title>
-	<meta
-		name="description"
-		content="View the leaderboards for various games and stats on MCC Island."
-	/>
-	<link rel="icon" href="/favicon.ico" />
-</svelte:head>
 <header
 	class="fixed top-0 left-0 right-0 h-12 bg-neutral-800 flex flex-row items-center z-50 text-lg justify-between"
 >
 	<a href="/" class="flex items-center ml-2 md:ml-4 font-semibold">
 		<img src="/icons/logo.png" alt="Island Stats Logo" class="mr-0.5 w-8 h-8 min-w-8" />
-		<p>Island Stats</p>
+		<p class="hidden sm:block">Island Stats</p>
 	</a>
 	<NavSearch />
 	<Nav />
 </header>
 <main class="backdrop-blur-lg backdrop-brightness-50 md:w-4/5 md:mx-auto min-h-full">
-	<div class="flex flex-wrap justify-items-center gap-3 py-5 text-2xl md:text-4xl">
-		<h1>Leaderboards</h1>
-	</div>
-	<form method="POST" on:submit|preventDefault={handleFormSubmit}>
-		<div id="games" class="flex justify-center space-x-2 mt-5">
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "general"}
-					src="https://cdn.islandstats.xyz/games/lobby/icon.png"
-					alt="General"
-				/>
-				<input type="radio" name="game" value="general" class="hidden" bind:group={game} />
-			</label>
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "battle_box"}
-					src="https://cdn.islandstats.xyz/games/battle_box/icon.png"
-					alt="Battle Box"
-				/>
-				<input type="radio" name="game" value="battle_box" class="hidden" bind:group={game} />
-			</label>
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "dynaball"}
-					src="https://cdn.islandstats.xyz/games/dynaball/icon.png"
-					alt="Dynaball"
-				/>
-				<input type="radio" name="game" value="dynaball" class="hidden" bind:group={game} />
-			</label>
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "hitw"}
-					src="https://cdn.islandstats.xyz/games/hitw/icon.png"
-					alt="Hole In The Wall"
-				/>
-				<input type="radio" name="game" value="hitw" class="hidden" bind:group={game} />
-			</label>
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "pkw"}
-					src="https://cdn.islandstats.xyz/games/parkour_warrior/icon.png"
-					alt="Parkour Warrior"
-				/>
-				<input type="radio" name="game" value="pkw" class="hidden" bind:group={game} />
-			</label>
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "sky_battle"}
-					src="https://cdn.islandstats.xyz/games/sky_battle/icon.png"
-					alt="Sky Battle"
-				/>
-				<input type="radio" name="game" value="sky_battle" class="hidden" bind:group={game} />
-			</label>
-			<label>
-				<img
-					class="transition-filter duration-500 hover:grayscale-0"
-					class:grayscale={game !== "tgttos"}
-					src={`https://cdn.islandstats.xyz/games/tgttos/icon.png`}
-					alt="To Get To The Other Side"
-				/>
-				<input type="radio" name="game" value="tgttos" class="hidden" bind:group={game} />
-			</label>
-		</div>
-		<div
-			id="leaderboard-options-stats"
-			class={`mt-4 grid gap-4 mx-auto md:${statOptions[game].length < 5 ? `grid-cols-${statOptions[game].length}` : "grid-cols-5"} grid-cols-2`}
-		>
-			{#each statOptions[game] as option}
-				<button
-					class={`rounded-md px-3 py-1 font-semibold text-black ${
-						stat === option ? "bg-teal-400" : "bg-neutral-200 hover:bg-teal-200"
-					}`}
-					on:click={() => (stat = option)}
-				>
-					{option.name}
-				</button>
-			{/each}
-		</div>
-		<!-- {#if game !== "general" && game !== "pkw"}
-			<div
-				id="leaderboard-options-badges"
-				class={`mt-4 grid gap-4 mx-auto lg:${statOptions[game].length < 5 ? `grid-cols-${statOptions[game].length}` : "grid-cols-5"} grid-cols-4`}
-			>
-				{#each badgeOptions[game] as badge}
-					<button class="" on:click={() => (stat = badge)}>
-						<img
-							src={`https://cdn.islandstats.xyz/badges/${game}/${badge.icon}.png`}
-							alt={badge.name}
-						/>
+	<h1 class="text-2xl lg:text-4xl mb-5">Leaderboards</h1>
+	<div class="grid gap-1 md:grid-cols-4">
+		{#each gameOptions as game}
+			{#if game === "GENERAL"}
+				<div class="dropdown">
+					<button class="dropdown-toggle rounded-md bg-sky-400 py-2 px-4"> General </button>
+					<div class="dropdown-menu">
+						{#each statOptions[game] as stats}
+							<button
+								class="dropdown-item"
+								on:click={() => {
+									option = stats;
+									handleFormSubmit();
+								}}
+							>
+								{stats.name}
+							</button>
+						{/each}
+					</div>
+				</div>
+			{:else}
+				<div class="dropdown">
+					<button class="dropdown-toggle rounded-md bg-sky-400 py-2 px-4">
+						{Games[game].name}
 					</button>
-					<Tooltip
-						><div>
-							<h1>{badge.name}</h1>
-							<p>{badge.description}</p>
-						</div></Tooltip
-					>
-				{/each}
-			</div>
-		{/if} -->
-	</form>
-	<div class="mt-4">
-		{#if form}
+					<div class="dropdown-menu">
+						{#each statOptions[game] as stats}
+							<button
+								class="dropdown-item"
+								on:click={() => {
+									option = stats;
+									handleFormSubmit();
+								}}
+							>
+								{stats.name}
+							</button>
+						{/each}
+						{#if game !== "PARKOUR_WARRIOR"}
+							<hr class="dropdown-divider" />
+							{#each badgeOptions[game] as badge}
+								<button
+									class="dropdown-item"
+									on:click={() => {
+										option = badge;
+										handleFormSubmit();
+									}}
+								>
+									{badge.name}
+								</button>
+							{/each}
+						{/if}
+					</div>
+				</div>
+			{/if}
+		{/each}
+	</div>
+	<div id="leaderboards" class="mt-4">
+		{#if form && option}
 			{#if form.success === true}
-				<h1 class="text-center text-2xl md:text-4xl my-5">{stat.name}</h1>
+				<div class="flex justify-center items-center gap-1">
+					{#if "icon" in option}
+						<img
+							src={`https://cdn.islandstats.xyz/badges/${option.icon}.png`}
+							alt="Badge"
+							class="h-16 w-16 rounded-md"
+						/>
+					{/if}
+					<h1 class="text-center text-2xl md:text-4xl my-5">{option.name}</h1>
+				</div>
+				{#if "description" in option}
+					<Tooltip>{option.description}</Tooltip>
+				{/if}
 				<Leaderboard data={form.data} />
 			{:else if form.success === false}
 				<p class="text-center text-red-500">{form.cause}</p>
 			{/if}
 		{:else}
-			<p class="text-center">Select a game to view the leaderboard</p>
+			<p class="mt-5">Select a game to view the leaderboard</p>
 		{/if}
 	</div>
 </main>

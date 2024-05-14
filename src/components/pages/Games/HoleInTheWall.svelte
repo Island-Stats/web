@@ -17,7 +17,7 @@
 				calculateTrophies(holeInTheWallStats, badges.hitw_tiered)
 			).toLocaleString()}
 		</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div>
 		<p>
@@ -110,7 +110,7 @@
 	<h3 class="text-xl font-bold mt-5 flex">
 		Badges &bull;
 		<span class="ml-1">{calculateTrophies(holeInTheWallStats, badges.hitw)}</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.hitw as badge}
@@ -122,9 +122,17 @@
 					class:grayscale={holeInTheWallStats.badges[badge.stat] === 0}
 				/>
 				<div class="flex flex-col">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-					</p>
+					<div class="flex font-semibold flex-col">
+						<p>{badge.name}</p>
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{badge.trophies.toLocaleString()}
+						</span>
+					</div>
 					<p>Completed {holeInTheWallStats.badges[badge.stat]} times</p>
 				</div>
 			</div>
@@ -136,7 +144,7 @@
 	<h3 class="text-xl font-bold mt-5 flex">
 		Tiered Badges &bull;
 		<span class="ml-1">{calculateTrophies(holeInTheWallStats, badges.hitw_tiered)}</span>
-		<img src="https://cdn.islandstats.xyz/icons/trophies/yellow.png" alt="Trophy icon" class="h-8 ml-1" />
+		<img src="https://cdn.islandstats.xyz/icons/trophies/red.png" alt="Trophy icon" class="h-8 ml-1" />
 	</h3>
 	<div class="mt-3 grid grid-cols-2 gap-5 sm:grid-cols-3">
 		{#each badges.hitw_tiered as badge}
@@ -148,10 +156,20 @@
 					class:grayscale={holeInTheWallStats[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(holeInTheWallStats[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold flex-col">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(holeInTheWallStats[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{calculateTrophies(holeInTheWallStats, [badge]).toLocaleString()}
+						</span>
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if holeInTheWallStats[badge.stat] >= tier.amount}

@@ -38,7 +38,7 @@
 			).toLocaleString()}
 		</span>
 		<img
-			src="https://cdn.islandstats.xyz/icons/trophies/yellow.png"
+			src="https://cdn.islandstats.xyz/icons/trophies/red.png"
 			alt="Trophy icon"
 			class="h-8 ml-1"
 		/>
@@ -217,7 +217,7 @@
 			{calculateTrophies(skyBattleStats, badges.sky_battle).toLocaleString()}
 		</span>
 		<img
-			src="https://cdn.islandstats.xyz/icons/trophies/yellow.png"
+			src="https://cdn.islandstats.xyz/icons/trophies/red.png"
 			alt="Trophy icon"
 			class="h-8 ml-1"
 		/>
@@ -232,9 +232,17 @@
 					class:grayscale={skyBattleStats.badges[badge.stat] === 0}
 				/>
 				<div class="flex flex-col">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-					</p>
+					<div class="flex font-semibold flex-col">
+						<p>{badge.name}</p>
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{badge.trophies.toLocaleString()}
+						</span>
+					</div>
 					<p>Completed {skyBattleStats.badges[badge.stat]} times</p>
 				</div>
 			</div>
@@ -249,7 +257,7 @@
 			{calculateTrophies(skyBattleStats, badges.sky_battle_tiered).toLocaleString()}
 		</span>
 		<img
-			src="https://cdn.islandstats.xyz/icons/trophies/yellow.png"
+			src="https://cdn.islandstats.xyz/icons/trophies/red.png"
 			alt="Trophy icon"
 			class="h-8 ml-1"
 		/>
@@ -264,10 +272,20 @@
 					class:grayscale={skyBattleStats[badge.stat] === 0}
 				/>
 				<div class="flex flex-col mc-colors">
-					<p class="flex text-lg font-semibold">
-						{badge.name}
-						{calculateBadgeTier(skyBattleStats[badge.stat], badge.tiers).tier.name}
-					</p>
+					<div class="flex font-semibold flex-col">
+						<p>
+							{badge.name}
+							{calculateBadgeTier(skyBattleStats[badge.stat], badge.tiers).tier.name}
+						</p>
+						<span class="flex gap-x-1">
+							<img
+								src="https://cdn.islandstats.xyz/icons/trophies/red.png"
+								alt="Trophy icon"
+								class="h-6 w-6"
+							/>
+							{calculateTrophies(skyBattleStats, [badge]).toLocaleString()}
+						</span>
+					</div>
 					<p>
 						{#each badge.tiers as tier, index}
 							{#if skyBattleStats[badge.stat] >= tier.amount}

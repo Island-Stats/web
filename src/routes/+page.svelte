@@ -26,7 +26,7 @@
 		<img src="/icons/logo.png" alt="Island Stats Logo" width={32} height={32} class="mr-0.5" />
 		<p class="">Island Stats</p>
 	</a>
-	<Nav />
+	<div class="ml-auto"><Nav /></div>
 </header>
 <main class="grid">
 	<Search />
