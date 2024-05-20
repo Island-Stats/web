@@ -12,33 +12,25 @@
 	const statOptions = {
 		GENERAL: [
 			{
-				stat: "$statistics.general.games_played",
-				name: "Games Played"
+				stat: "trophies",
+				name: "Total Trophies"
 			},
 			{
-				stat: "$collections.currency.royalReputation",
+				stat: "trophies_skill",
+				name: "Skill Trophies"
+			},
+			{
+				stat: "trophies_style",
+				name: "Style Trophies"
+			},
+			{
+				stat: "royal_reputation",
 				name: "Royal Reputation"
 			},
-			{
-				stat: "$statistics.general.total_faction_xp",
-				name: "Total Faction XP"
-			},
-			{
-				stat: "$statistics.general.quest_faction_xp",
-				name: "Quest Faction XP"
-			},
-			{
-				stat: "$statistics.general.game_faction_xp",
-				name: "Game Faction XP"
-			}
 		],
 		BATTLE_BOX: [
 			{
-				stat: "$statistics.battle_box.games_played",
-				name: "Games Played"
-			},
-			{
-				stat: "$statistics.battle_box.solo_first_place",
+				stat: "battle_box_quads_first_place_individual",
 				name: "First Place"
 			},
 			{
@@ -269,7 +261,8 @@
 </header>
 <main class="backdrop-blur-lg backdrop-brightness-50 md:w-4/5 md:mx-auto min-h-full">
 	<h1 class="text-2xl lg:text-4xl mb-5">Leaderboards</h1>
-	<div class="grid gap-1 md:grid-cols-4">
+	<p class="text-xl">Redesign in progress</p>
+	<!-- <div class="grid gap-1 md:grid-cols-4">
 		{#each gameOptions as game}
 			{#if game === "GENERAL"}
 				<div class="dropdown">
@@ -347,5 +340,5 @@
 		{:else}
 			<p class="mt-5">Select a game to view the leaderboard</p>
 		{/if}
-	</div>
+	</div> -->
 </main>
