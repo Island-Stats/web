@@ -33,7 +33,7 @@
 		<p>
 			Want to help contribute? Check out the
 			<a href={"https://github.com/Island-Stats/web"} target="_blank">GitHub</a>
-			repo or join our <a href={"https://discord.islandstats.xyz"} target="_blank">Discord</a>.
+			repo or join our <a href={"https://discord.gg/rwCnzXQMUB"} target="_blank">Discord</a>.
 		</p>
 		<p>
 			Design inspired by{" "}
