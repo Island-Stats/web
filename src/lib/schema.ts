@@ -26,6 +26,11 @@ export type CrownLevel = {
 		obtainable: number;
 		bonus: number;
 	};
+	angler: {
+		obtained: number;
+		obtainable: number;
+		bonus: number;
+	};
 	nextEvolutionLevel: number;
 	nextLevelProgress: {
 		obtained: number;
@@ -398,9 +403,11 @@ export type GameName = keyof typeof Games;
 export type Leaderboard = LeaderboardPlayer[];
 
 export type LeaderboardPlayer = {
-	uuid: string;
-	username: string;
-	ranks: RankName[];
+	player: {
+		uuid: string;
+		username: string;
+		ranks: RankName[];
+	} | null;
 	value: number;
-	placement: number;
+	rank: number;
 };
