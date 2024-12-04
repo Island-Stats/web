@@ -35,7 +35,7 @@
 		<p class="text-neutral-200 text-xl font-bold transition-colors">Site preview</p>
 		<p class="text-neutral-200">
 			Island Stats is still in heavy development. Please report any bugs on the{" "}
-			<a href="https://discord.islandstats.xyz/" class="text-sky-200 hover:text-sky-400">
+			<a href="https://discord.gg/rwCnzXQMUB" class="text-sky-200 hover:text-sky-400">
 				Discord
 			</a>{" "}
 			or{" "}
