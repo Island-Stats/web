@@ -92,7 +92,6 @@ export type Statistics = {
 
 export type Currency = {
 	coins: number;
-	gems: number;
 	silver: number;
 	materialDust: number;
 	royalReputation: number;

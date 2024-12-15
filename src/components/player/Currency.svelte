@@ -7,7 +7,7 @@
 <div class="mx-auto col-span-full flex flex-col text-center">
 	<h3 class="text-neutral-200 font-semibold">Wallet</h3>
 	{#if currency}
-		<div class="grid grid-cols-2 md:grid-cols-5 justify-items-start md:justify-items-center">
+		<div class="grid grid-cols-2 md:grid-cols-4 justify-items-start md:justify-items-center">
 			<div class="flex items-center">
 				<img
 					src="https://cdn.islandstats.xyz/icons/currency/coin.png"
@@ -22,22 +22,6 @@
 				/>
 				<span>
 					{currency.coins.toLocaleString()}
-				</span>
-			</div>
-			<div class="flex items-center">
-				<img
-					src="https://cdn.islandstats.xyz/icons/currency/gem.png"
-					alt="Gems"
-					title="Gems"
-					width={32}
-					height={32}
-					class="pixelated mr-0.5"
-					loading="lazy"
-					fetchPriority="low"
-					decoding="async"
-				/>
-				<span>
-					{currency.gems.toLocaleString()}
 				</span>
 			</div>
 			<div class="flex items-center">
