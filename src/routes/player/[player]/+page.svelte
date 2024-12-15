@@ -98,7 +98,8 @@
 			`Crown Level: ${playerData.crownLevel.level.toLocaleString()}`,
 			`Total Trophies: ${(playerData.crownLevel.skill.obtained + playerData.crownLevel.style.obtained).toLocaleString()}`,
 			`Skill Trophies: ${playerData.crownLevel.skill.obtained.toLocaleString()}`,
-			`Style Trophies: ${playerData.crownLevel.style.obtained.toLocaleString()}`
+			`Style Trophies: ${playerData.crownLevel.style.obtained.toLocaleString()}`,
+			`Angler Trophies: ${playerData.crownLevel.angler.obtained.toLocaleString()}`
 		].join("\n")}
 	/>
 	<link rel="icon" href={`https://mc-heads.net/avatar/${playerData.uuid}/128`} />

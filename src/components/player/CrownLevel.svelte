@@ -25,13 +25,17 @@
 			obtained: crownLevelData.skill.obtained,
 			needed: crownLevelData.skill.obtainable
 		},
+		angler: {
+			obtained: crownLevelData.angler.obtained,
+			needed: crownLevelData.angler.obtainable
+		},
 		total: {
-			obtained: crownLevelData.skill.obtained + crownLevelData.style.obtained,
-			needed: crownLevelData.skill.obtainable + crownLevelData.style.obtainable
+			obtained: crownLevelData.skill.obtained + crownLevelData.style.obtained + crownLevelData.angler.obtained,
+			needed: crownLevelData.skill.obtainable + crownLevelData.style.obtainable + crownLevelData.angler.obtainable
 		},
 		bonus: {
-			obtained: crownLevelData.skill.bonus + crownLevelData.style.bonus,
-			needed: crownLevelData.skill.bonus + crownLevelData.style.bonus
+			obtained: crownLevelData.skill.bonus + crownLevelData.style.bonus + crownLevelData.angler.bonus,
+			needed: crownLevelData.skill.bonus + crownLevelData.style.bonus + crownLevelData.angler.bonus
 		}
 	};
 
@@ -121,6 +125,32 @@
 			</div>
 		</div>
 		<Tooltip>Skill Trophies</Tooltip>
+		<div>
+			<button
+				name="Angler Trophies"
+				class={`w-14 h-14 flex justify-center items-center rounded-full mcc-colors transition-colors duration-500`}
+				style={`
+					background-color: ${selectedProgress === "angler" ? `var(--angler-trophy)` : "#a1a1a1"}
+				`}
+				on:click={() => (selectedProgress = "angler")}
+			>
+				<div
+					id="angler-trophies-icon"
+					class="w-8 h-8 pixelated"
+					style={`
+						background-image: url('https://cdn.islandstats.xyz/icons/trophies/blue.png');
+						background-size: cover;
+					`}
+				/>
+			</button>
+			<div class="flex gap-1 justify-center">
+				<!-- Level -->
+				<span class="text-neutral-300">
+					{calculations.angler.obtained.toLocaleString()}
+				</span>
+			</div>
+		</div>
+		<Tooltip>Angler Trophies</Tooltip>
 		<div>
 			<button
 				name="Skill Trophies"
