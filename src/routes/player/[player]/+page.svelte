@@ -57,6 +57,9 @@
 					const gameName = Games[playerData.status.server.associatedGame];
 					status.icon = gameName.image;
 					status.text = `In the ${gameName.name} Lobby`;
+				} else if (playerData.status.server.subType == "fishing") {
+					status.text = "On a Fishing Island";
+					status.icon = "fishing/icon.png";
 				} else {
 					status.text = "In the Main Lobby";
 					status.icon = "lobby/icon.png";
@@ -95,11 +98,11 @@
 		content={[
 			`Rank: ${Ranks[getHighestRank(playerData.ranks)].name}`,
 			"", // Empty line
-			`Crown Level: ${playerData.crownLevel.level.toLocaleString()}`,
-			`Total Trophies: ${(playerData.crownLevel.skill.obtained + playerData.crownLevel.style.obtained).toLocaleString()}`,
-			`Skill Trophies: ${playerData.crownLevel.skill.obtained.toLocaleString()}`,
-			`Style Trophies: ${playerData.crownLevel.style.obtained.toLocaleString()}`,
-			`Angler Trophies: ${playerData.crownLevel.angler.obtained.toLocaleString()}`
+			`Crown Level: ${playerData.levels.crownLevel.level.toLocaleString()}`,
+			`Total Trophies: ${(playerData.trophies.skill.obtained + playerData.trophies.style.obtained).toLocaleString()}`,
+			`Skill Trophies: ${playerData.trophies.skill.obtained.toLocaleString()}`,
+			`Style Trophies: ${playerData.trophies.style.obtained.toLocaleString()}`,
+			`Angler Trophies: ${playerData.trophies.fishing.obtained.toLocaleString()}`
 		].join("\n")}
 	/>
 	<link rel="icon" href={`https://mc-heads.net/avatar/${playerData.uuid}/128`} />
@@ -166,7 +169,7 @@
 					/>
 				{/if}
 			</div>
-			<CrownLevel crownLevelData={playerData.crownLevel} />
+			<CrownLevel levels={playerData.levels} trophies={playerData.trophies} />
 		</div>
 	</div>
 	<div
