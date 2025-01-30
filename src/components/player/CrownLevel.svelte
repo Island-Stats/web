@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { getLevel } from "$lib/levels";
-	import type { CrownLevel } from "$lib/schema";
+	import { getFishingLevel, getLevel } from "$lib/levels";
+	import type { Levels, Trophies } from "$lib/schema";
 	import { Tooltip } from "flowbite-svelte";
 
-	export let crownLevelData: CrownLevel;
+	export let levels: Levels;
+	export let trophies: Trophies;
 
-	const currentLevel = getLevel(crownLevelData.level);
+	const currentLevel = getLevel(levels.crownLevel.evolution);
+	const currentFishingLevel = getFishingLevel(levels.fishingLevel.evolution);
 
 	const calculations: {
 		[key: string]: {
@@ -14,31 +16,34 @@
 		};
 	} = {
 		level: {
-			obtained: crownLevelData.nextLevelProgress.obtained,
-			needed: crownLevelData.nextLevelProgress.obtainable
+			obtained: levels.crownLevel.nextLevelProgress.obtained,
+			needed: levels.crownLevel.nextLevelProgress.obtainable
+		},
+		fishingLevel: {
+			obtained: levels.fishingLevel.nextLevelProgress.obtained,
+			needed: levels.fishingLevel.nextLevelProgress.obtainable
 		},
 		style: {
-			obtained: crownLevelData.style.obtained,
-			needed: crownLevelData.style.obtainable
+			obtained: trophies.style.obtained,
+			needed: trophies.style.obtainable
 		},
 		skill: {
-			obtained: crownLevelData.skill.obtained,
-			needed: crownLevelData.skill.obtainable
+			obtained: trophies.skill.obtained,
+			needed: trophies.skill.obtainable
 		},
-		angler: {
-			obtained: crownLevelData.angler.obtained,
-			needed: crownLevelData.angler.obtainable
+		fishing: {
+			obtained: trophies.fishing.obtained,
+			needed: trophies.fishing.obtainable
 		},
 		total: {
-			obtained: crownLevelData.skill.obtained + crownLevelData.style.obtained + crownLevelData.angler.obtained,
-			needed: crownLevelData.skill.obtainable + crownLevelData.style.obtainable + crownLevelData.angler.obtainable
+			obtained: trophies.skill.obtained + trophies.style.obtained + trophies.fishing.obtained,
+			needed: trophies.skill.obtainable + trophies.style.obtainable + trophies.fishing.obtainable
 		},
 		bonus: {
-			obtained: crownLevelData.skill.bonus + crownLevelData.style.bonus + crownLevelData.angler.bonus,
-			needed: crownLevelData.skill.bonus + crownLevelData.style.bonus + crownLevelData.angler.bonus
+			obtained: trophies.skill.bonus + trophies.style.bonus + trophies.fishing.bonus,
+			needed: trophies.skill.bonus + trophies.style.bonus + trophies.fishing.bonus
 		}
 	};
-
 
 	$: selectedProgress = "level";
 </script>
@@ -68,11 +73,38 @@
 			<div class="flex gap-1 justify-center">
 				<!-- Level -->
 				<span class="text-neutral-300">
-					{crownLevelData.level}
+					{levels.crownLevel.level}
 				</span>
 			</div>
 		</div>
 		<Tooltip>Crown Level</Tooltip>
+		<div>
+			<button
+				name="Fishing Level"
+				class={`w-14 h-14 flex justify-center items-center rounded-full transition-colors duration-500`}
+				style={`
+					background-color:
+						${selectedProgress === "fishingLevel" ? currentLevel.color : "#a1a1a1"}
+				`}
+				on:click={() => (selectedProgress = "fishingLevel")}
+			>
+				<div
+					id="fishingLevel-icon"
+					class="w-8 h-8 pixelated"
+					style={`
+						background-image: url('https://cdn.islandstats.xyz/fishing/level/${currentFishingLevel.icon}.png');
+						background-size: cover;
+					`}
+				/>
+			</button>
+			<div class="flex gap-1 justify-center">
+				<!-- Level -->
+				<span class="text-neutral-300">
+					{levels.fishingLevel.level}
+				</span>
+			</div>
+			<Tooltip>Fishing Level</Tooltip>
+		</div>
 		<div>
 			<button
 				name="Style Trophies"
@@ -130,12 +162,12 @@
 				name="Angler Trophies"
 				class={`w-14 h-14 flex justify-center items-center rounded-full mcc-colors transition-colors duration-500`}
 				style={`
-					background-color: ${selectedProgress === "angler" ? `var(--angler-trophy)` : "#a1a1a1"}
+					background-color: ${selectedProgress === "fishing" ? `var(--fishing-trophy)` : "#a1a1a1"}
 				`}
-				on:click={() => (selectedProgress = "angler")}
+				on:click={() => (selectedProgress = "fishing")}
 			>
 				<div
-					id="angler-trophies-icon"
+					id="fishing-trophies-icon"
 					class="w-8 h-8 pixelated"
 					style={`
 						background-image: url('https://cdn.islandstats.xyz/icons/trophies/blue.png');
@@ -146,7 +178,7 @@
 			<div class="flex gap-1 justify-center">
 				<!-- Level -->
 				<span class="text-neutral-300">
-					{calculations.angler.obtained.toLocaleString()}
+					{calculations.fishing.obtained.toLocaleString()}
 				</span>
 			</div>
 		</div>
@@ -208,7 +240,7 @@
 				<!-- Level -->
 				<span class="font-semibold">Level</span>
 				<span class="text-neutral-300">
-					{crownLevelData.level}
+					{levels.crownLevel.level}
 				</span>
 			</div>
 			<div class="md:ml-auto font-semibold">
@@ -227,12 +259,12 @@
 	<!-- {/* Progress Bar -->
 	<div
 		class="h-3 left-0 right-0 rounded-md mcc-colors transition-all duration-500"
-		style={` background-color: ${selectedProgress === "level" ? currentLevel.colorDark : `var(--${selectedProgress}-trophy-dark)`}`}
+		style={` background-color: ${selectedProgress === "level" ? currentLevel.colorDark : selectedProgress === "fishingLevel" ? currentFishingLevel.colorDark : `var(--${selectedProgress}-trophy-dark)`}`}
 	>
 		<div
 			class="h-full left-0 right-0 rounded-md text-center transition-all duration-500"
 			style={`width: calc(100% * ${(calculations[selectedProgress].obtained / calculations[selectedProgress].needed).toFixed(3)});
-				background-color: ${selectedProgress === "level" ? currentLevel.color : `var(--${selectedProgress}-trophy)`}`}
+				background-color: ${selectedProgress === "level" ? currentLevel.color : selectedProgress === "fishingLevel" ? currentFishingLevel.color : `var(--${selectedProgress}-trophy)`}`}
 		></div>
 	</div>
 </div>

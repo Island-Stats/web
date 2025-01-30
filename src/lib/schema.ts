@@ -4,7 +4,8 @@ export type Player = {
 	uuid: string;
 	username: string;
 	ranks: RankName[];
-	crownLevel: CrownLevel;
+	levels: Levels;
+	trophies: Trophies;
 	collections?: Collection;
 	social?: Social;
 	status?: Status;
@@ -14,8 +15,22 @@ export type Player = {
 
 // Crown Level Types
 
-export type CrownLevel = {
+export type Levels = {
+	fishingLevel: LevelData;
+	crownLevel: LevelData;
+};
+
+type LevelData = {
 	level: number;
+	evolution: number;
+	nextEvolutionLevel: number;
+	nextLevelProgress: {
+		obtained: number;
+		obtainable: number;
+	};
+}
+
+export type Trophies = {
 	skill: {
 		obtained: number;
 		obtainable: number;
@@ -26,15 +41,10 @@ export type CrownLevel = {
 		obtainable: number;
 		bonus: number;
 	};
-	angler: {
+	fishing: {
 		obtained: number;
 		obtainable: number;
 		bonus: number;
-	};
-	nextEvolutionLevel: number;
-	nextLevelProgress: {
-		obtained: number;
-		obtainable: number;
 	};
 };
 
