@@ -99,7 +99,7 @@
 			`Rank: ${Ranks[getHighestRank(playerData.ranks)].name}`,
 			"", // Empty line
 			`Crown Level: ${playerData.levels.crownLevel.level.toLocaleString()}`,
-			`Total Trophies: ${(playerData.trophies.skill.obtained + playerData.trophies.style.obtained).toLocaleString()}`,
+			`Total Trophies: ${(playerData.trophies.skill.obtained + playerData.trophies.style.obtained + playerData.trophies.fishing.obtained).toLocaleString()}`,
 			`Skill Trophies: ${playerData.trophies.skill.obtained.toLocaleString()}`,
 			`Style Trophies: ${playerData.trophies.style.obtained.toLocaleString()}`,
 			`Angler Trophies: ${playerData.trophies.fishing.obtained.toLocaleString()}`
